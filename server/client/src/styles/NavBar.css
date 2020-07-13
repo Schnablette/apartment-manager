@@ -1,0 +1,42 @@
+#navBar h1 {
+    float: left;
+    padding: 5px 10px;
+    margin: 0;
+    color: white;
+}
+
+#navBar {
+    background-color: var(--main);
+    height: 50px;
+}
+
+#navBar-list {
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+#navBar-list li {
+    display: inline-block;
+    margin: 5px 20px 0 0;
+    padding: 12px 0 14px 0;
+    border-radius: 20px 20px 0 0;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#navBar-list li:hover {
+    background-color: var(--main-dark);
+}
+
+#navBar-list li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 300;
+}
+
+.active-nav {
+    background-color: white;
+    
+}
