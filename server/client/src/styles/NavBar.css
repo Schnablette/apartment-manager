@@ -21,7 +21,9 @@
     margin: 5px 20px 0 0;
     padding: 12px 0 14px 0;
     border-radius: 20px 20px 0 0;
-    width: 200px;
+    max-width: 200px;
+    min-width: 120px;
+    width: 13vw;
     text-align: center;
     cursor: pointer;
 }
@@ -38,5 +40,54 @@
 
 .active-nav {
     background-color: white;
-    
 }
+
+#bars {
+    color: var(--main);
+}
+
+#toggle-collapse {
+    background-color: white;
+    width: 45px;
+    height: 40px;
+    margin: 5px 15px 0 0;
+    float: right;
+    border: 0;
+    border-radius: 10px;
+}
+
+#toggle-collapse:hover {
+    background-color: var(--main-dark);
+}
+
+@media screen and (min-width: 751px) {
+    #toggle-collapse {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    #navBar-list li {
+        display: inline-block;
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        background-color: var(--main);
+        padding: 25px auto;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    #navBar-list li:hover {
+        background-color: var(--main-dark);
+    }
+
+    #navBar-list {
+        float: none;
+        display: none;
+        width: 100%;
+        background-color: var(--main);
+    }
+}
+
