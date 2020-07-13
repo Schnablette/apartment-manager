@@ -1,0 +1,33 @@
+:root {
+  --main: #52DBA7;
+  --mid: #DB853B;
+  --bright: #DB6797;
+  --main-light: #86DBBC;
+  --mid-light: #DBA370;
+  --bright-light: #DB9CB4;
+  --main-dark: #24AB7E;
+  --mid-dark: #AB5D13;
+  --bright-dark: #AB355B;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+p {
+  font-weight: 300;
+}
