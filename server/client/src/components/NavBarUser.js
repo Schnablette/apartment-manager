@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import "../styles/NavBar.css"
+import "../styles/NavBarUser.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-class NavBar extends Component {
+class NavBarUser extends Component {
     
     toggleNav() {
-        if (document.getElementById('navBar-list').style.display === "block" && document.body.clientWidth < 751) {
-            document.getElementById('navBar-list').style.display = "none"
-        } else {
-            document.getElementById('navBar-list').style.display = "block" 
-        }
 
-        if (document.body.clientWidth > 750) {
-            document.getElementById('navBar-list').style.display = "block" 
-        }
     }
 
     render() {
@@ -35,4 +27,4 @@ class NavBar extends Component {
     }
   };
 
-export default NavBar;
+export default NavBarUser;

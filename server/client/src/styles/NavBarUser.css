@@ -39,7 +39,7 @@
 }
 
 .active-nav {
-    background-color: white;
+    background-color: var(--main-light);
 }
 
 #bars {
@@ -69,7 +69,6 @@
 @media screen and (max-width: 750px) {
     #navBar-list li {
         display: inline-block;
-        float: none;
         width: 100%;
         max-width: 100%;
         min-width: 0;
@@ -79,15 +78,16 @@
         border-radius: 0;
     }
 
-    #navBar-list li:hover {
-        background-color: var(--main-dark);
-    }
-
     #navBar-list {
         float: none;
-        display: none;
         width: 100%;
+        z-index: -1;
         background-color: var(--main);
+        position: relative;
+    }
+
+    .hidden {
+        display: none;
     }
 }
 
