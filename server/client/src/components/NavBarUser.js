@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import "../styles/NavBarUser.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { Switch, Route } from 'react-router';
 
 class NavBarUser extends Component {
     

@@ -1,8 +1,6 @@
 import React from 'react';
 import "../styles/SiteHome.css";
 import { Link } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 class SiteHome extends React.Component {
     render() {
@@ -17,7 +15,7 @@ class SiteHome extends React.Component {
                             <h2>Resident</h2>
                         </div>
                     </Link>
-                    <Link style={{ textDecoration: 'none' }}>
+                    <Link to="/admin" style={{ textDecoration: 'none' }}>
                         <div id="adminPanel">
                             <h2>Admin</h2>
                         </div>
