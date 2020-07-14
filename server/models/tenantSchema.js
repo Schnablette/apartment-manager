@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const tenantSchema = new Schema({
   name: String,
-  _id: String,
-  aptNumber: String,
+  _id: Number,
+  aptNumber: Number,
 })
 
 const Tenant = mongoose.model('tenant', tenantSchema);

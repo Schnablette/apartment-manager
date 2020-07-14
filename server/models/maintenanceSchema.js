@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const maintenanceSchema = new Schema({
   status: Boolean,
-  _id: String,
-  aptNumber: String,
+  _id: Number,
+  aptNumber: Number,
   description: String,
   date: Date
 })
