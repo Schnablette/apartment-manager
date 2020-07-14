@@ -7,7 +7,16 @@ class SiteHome extends React.Component {
     render() {
         return (
             <div>
-                <div id="homePic">
+                <div id="homePic"></div>
+                <div id="homeFloat">
+                    <h1>Welcome to Namely</h1>
+                    <p>Which portal are you trying to get to?</p>
+                    <div id="userPanel">
+
+                    </div>
+                    <div id="adminPanel">
+
+                    </div>
                 </div>
             </div>
         )
