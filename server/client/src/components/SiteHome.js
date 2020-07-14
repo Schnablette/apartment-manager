@@ -1,14 +1,17 @@
 import React from 'react';
-import "../styles/UserHome.css";
+import "../styles/SiteHome.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-const SiteHome = () => {
-    return (
-        <div>
-            <h1>Site Home</h1>
-        </div>
-    )
+class SiteHome extends React.Component {
+    render() {
+        return (
+            <div>
+                <div id="homePic">
+                </div>
+            </div>
+        )
+    }
 }
 
 

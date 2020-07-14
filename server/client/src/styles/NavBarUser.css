@@ -42,6 +42,10 @@
     background-color: var(--main-light);
 }
 
+.active-nav li a {
+    color: var(--main);
+}
+
 #bars {
     color: var(--main);
 }
@@ -81,9 +85,10 @@
     #navBar-list {
         float: none;
         width: 100%;
+        display: none;
         z-index: -1;
         background-color: var(--main);
-        position: relative;
+        position: static;
     }
 
     .hidden {
