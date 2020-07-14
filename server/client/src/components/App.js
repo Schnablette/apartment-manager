@@ -7,6 +7,8 @@ import UserHome from "./UserHome";
 import SiteHome from "./SiteHome";
 import AdminReports from "./AdminReports";
 import AdminMaintenance from './AdminMaintenance';
+import AdminComplaints from './AdminComplaints';
+import AdminTenants from './AdminTenants';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path={"/user"} component={UserHome} />
         <Route path={"/admin/reports"} component={AdminReports} />
         <Route path={"/admin/maintenance"} component={AdminMaintenance} />
+        <Route path={"/admin/complaints"} component={AdminComplaints} />
+        <Route path={"/admin/tenants"} component={AdminTenants} />
       </Switch>
     </div>
   );
