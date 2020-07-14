@@ -31,13 +31,44 @@
 
 #homeFloat p {
     text-align: center;
-    margin: 5px 0 0 0;
+    margin: 5px 0 5px 0;
 }
 
 #userPanel, #adminPanel {
     width: 80%;
     height: 150px;
-    background-color: black;
+    background-color: var(--main);
     margin: 30px auto;
 }
+
+#userPanel:hover {
+    background-image: url('../assets/people.png');
+    background-position: center;
+    background-size: cover;
+    opacity: .3;
+}
+
+#userPanel:hover h2 {
+    display: none;
+}
+
+#adminPanel:hover {
+    background-image: url('../assets/computer.png');
+    background-position: center;
+    background-size: cover;
+    opacity: .3;
+}
+
+#adminPanel:hover h2 {
+    display: none;
+}
+
+#homeFloat h2 {
+    color: white;
+    text-align: center;
+    font-size: 3em;
+    padding: 40px 0 0 0;
+    margin: 0;
+}
+
 
