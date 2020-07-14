@@ -1,16 +1,19 @@
 import React from 'react';
-import "../styles/AdminHome.css";
+import "../styles/AdminReports.css";
 import AdminNav from "./AdminNav";
 
-class AdminHome extends React.Component {
+class AdminReports extends React.Component {
     render() {
         return (
             <div>
                 <AdminNav />
+                <div id="reportModule">
+                    
+                </div>
             </div>
         )
     }
 }
 
 
-export default AdminHome;
+export default AdminReports;

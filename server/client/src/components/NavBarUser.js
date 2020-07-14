@@ -4,7 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 class NavBarUser extends Component {
-    
+    constructor() {
+        super()
+
+        this.state = {
+            toggled: false
+        }
+    }
     toggleNav() {
 
     }
@@ -12,7 +18,7 @@ class NavBarUser extends Component {
     render() {
         return (
             <div>
-                <div id="navBar">
+                <nav id="navBar">
                     <h1>Namely</h1>
                     <button id="toggle-collapse" onClick={this.toggleNav.bind(this)}>
                         <FontAwesomeIcon id="bars" size="2x" icon={faBars} />
@@ -23,10 +29,32 @@ class NavBarUser extends Component {
                         <li id="complaints"><a href='#'>Complaints</a></li>
                         <li id="utilities"><a href='#'>Utilities</a></li>
                     </ul>
-                </div>
+                </nav>
             </div>
         )
     }
   };
 
 export default NavBarUser;
+
+{/* <NavLink
+activeClassName="active-nav"
+className="navBar-list"
+to="/user/maintenance"
+>
+Maintenance
+</NavLink>
+<NavLink
+activeClassName="active-nav"
+className="navBar-list"
+to="/user/complaints"
+>
+Complaints
+</NavLink>
+<NavLink
+activeClassName="active-nav"
+className="navBar-list"
+to="/user/profile"
+>
+Profile
+</NavLink> */}
