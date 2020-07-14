@@ -12,43 +12,41 @@ class NavBarUser extends Component {
 
     render() {
         return (
-            <div>
-                <nav id="adminNavBar">
-                    <h1>Namely</h1>
-                    <NavLink
-                        activeClassName="active-adminNav"
-                        className="adminNavBar-list"
-                        to="/admin/reports"
-                        >
-                        <FontAwesomeIcon icon={faClipboardList} size="lg" style={{marginRight: "22px", transform: "rotate(-20deg)"}}/>
-                        Reports
-                    </NavLink>
-                    <NavLink
-                        activeClassName="active-adminNav"
-                        className="adminNavBar-list"
-                        to="/admin/maintenance"
-                        >
-                        <FontAwesomeIcon icon={faHammer} size="lg" style={{marginRight: "15px", transform: "rotate(-20deg)"}}/>    
-                        Maintenance
-                    </NavLink>
-                    <NavLink
-                        activeClassName="active-adminNav"
-                        className="adminNavBar-list"
-                        to="/admin/complaints"
-                        >
-                        <FontAwesomeIcon icon={faBullhorn} size="lg" style={{marginRight: "15px", transform: "rotate(-20deg)"}}/>
-                        Complaints
-                    </NavLink>
-                    <NavLink
-                        activeClassName="active-adminNav"
-                        className="adminNavBar-list"
-                        to="/admin/tenants"
-                        >
-                        <FontAwesomeIcon icon={faUsers} size="lg" style={{marginRight: "15px"}}/>
-                        Tenants
-                    </NavLink>
-                </nav>
-            </div>
+            <nav id="adminNavBar">
+                <h1>Namely</h1>
+                <NavLink
+                    activeClassName="active-adminNav"
+                    className="adminNavBar-list"
+                    to="/admin/reports"
+                    >
+                    <FontAwesomeIcon icon={faClipboardList} size="lg" style={{marginRight: "22px", transform: "rotate(-20deg)"}}/>
+                    Reports
+                </NavLink>
+                <NavLink
+                    activeClassName="active-adminNav"
+                    className="adminNavBar-list"
+                    to="/admin/maintenance"
+                    >
+                    <FontAwesomeIcon icon={faHammer} size="lg" style={{marginRight: "15px", transform: "rotate(-20deg)"}}/>    
+                    Maintenance
+                </NavLink>
+                <NavLink
+                    activeClassName="active-adminNav"
+                    className="adminNavBar-list"
+                    to="/admin/complaints"
+                    >
+                    <FontAwesomeIcon icon={faBullhorn} size="lg" style={{marginRight: "15px", transform: "rotate(-20deg)"}}/>
+                    Complaints
+                </NavLink>
+                <NavLink
+                    activeClassName="active-adminNav"
+                    className="adminNavBar-list"
+                    to="/admin/tenants"
+                    >
+                    <FontAwesomeIcon icon={faUsers} size="lg" style={{marginRight: "15px"}}/>
+                    Tenants
+                </NavLink>
+            </nav>
         )
     }
   };

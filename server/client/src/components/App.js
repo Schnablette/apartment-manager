@@ -5,7 +5,8 @@ import { Switch, Route } from "react-router"
 // components
 import UserHome from "./UserHome";
 import SiteHome from "./SiteHome";
-import AdminHome from "./AdminHome";
+import AdminReports from "./AdminReports";
+import AdminMaintenance from './AdminMaintenance';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Switch>
         <Route exact path={"/"} component={SiteHome} />
         <Route path={"/user"} component={UserHome} />
-        <Route path={"/admin"} component={AdminHome} />
+        <Route path={"/admin/reports"} component={AdminReports} />
+        <Route path={"/admin/maintenance"} component={AdminMaintenance} />
       </Switch>
     </div>
   );

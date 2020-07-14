@@ -1,0 +1,11 @@
+#maintenanceModule {
+    background-color: var(--main);
+    height: 600px;
+    width: 1075px;
+    float: right;
+    position: absolute;
+    top: 50px;
+    left: 300px;
+    right: 0;
+    bottom: 0;
+}
