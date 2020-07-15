@@ -20,6 +20,8 @@ class UserHome extends Component {
         return (
             <div>
                 <h1 className="logo">Namely</h1>
+                <div className="homePic"></div>
+                <div id="userHomeModule">
                 <h1 id="welcome">Welcome Hill<br/>Valley Resident</h1>
                 <p className="instructions">Select an option to begin.</p>
                 <div id="userHome">
@@ -29,6 +31,7 @@ class UserHome extends Component {
                     <a href="/user/complaint">
                         <button>File a <br/> Resident Complaint</button>
                     </a>
+                </div>
                 </div>
             </div>
         )

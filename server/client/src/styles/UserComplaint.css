@@ -11,6 +11,7 @@
     left: 30%;
     bottom: 0;
     z-index: -3;
+    opacity: .3;
 }
 
 .moduleForm {

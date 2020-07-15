@@ -14,7 +14,7 @@ class UserMaintenance extends Component {
                 <a href="/user"><h1 className="logo">Namely</h1></a>
                 <div id="maintenanceBackgroundImage"></div>
                 <div className="moduleForm" id="complaintForm">
-                    <h1>Resident Complaint Form</h1>
+                    <h1>Resident Maintenance Request</h1>
                     <form role="form" id="complaintForm">
                         <label>Your Apartment</label>
                         <input type="text" placeholder="Apt #" className="apt" />

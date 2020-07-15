@@ -11,7 +11,7 @@ class UserComplaint extends Component {
     render() {
         return (
             <div id="userComplaint">
-                <h1 className="logo">Namely</h1>
+                <a href="/user"><h1 className="logo">Namely</h1></a>
                 <div id="complaintBackgroundImage"></div>
                 <div className="moduleForm" id="complaintForm">
                     <h1>Resident Complaint Form</h1>
