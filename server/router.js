@@ -55,4 +55,29 @@ module.exports = function(app) {
     newComplaint.save()
     res.json('successful complaint saved')
   })
+
+  app.get('/tenants', (req, res, next) => {
+    // get all tenants
+    Tenant.find({}).exec((err, allTenants) => {
+      if (err) {
+        res.send(err)
+      }
+      res.send(allTenants)
+    })
+  })
+
+  app.post('/tenants', (req, res, next) => {
+    // post a complaint report
+    let bodyParams = req.body
+
+    let newTenant = new Tenant({
+      name: bodyParams.name,
+      aptNumber: bodyParams.aptNumber,
+      tenants: bodyParams.tenants
+    })
+
+    newTenant.save()
+    res.json('successful tenant saved')
+  })
+
 }
