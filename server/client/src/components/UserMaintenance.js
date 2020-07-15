@@ -19,19 +19,19 @@ class UserMaintenance extends Component {
 
     updateApt(event) {
         this.setState({aptNumber: event.target.value}, () => {
-            console.log("aptNumber changed to " + this.state.aptNumber)
+            console.log("AptNumber changed to " + this.state.aptNumber)
         })
     }
 
     updateDesc(event) {
         this.setState({description: event.target.value}, () => {
-            console.log("aptNumber changed to " + this.state.aptNumber)
+            console.log("Description changed to " + this.state.aptNumber)
         })
     }
 
     updateRoom(event) {
         this.setState({room: event.target.value}, () => {
-            console.log("aptNumber changed to " + this.state.room)
+            console.log("Room changed to " + this.state.room)
         })
     }
 
