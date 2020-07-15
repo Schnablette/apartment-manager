@@ -1,0 +1,15 @@
+#maintenanceBackgroundImage {
+    background-image: url(../assets/green-plant.png);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 70%;
+    height: 130%;
+    float: right;
+    top: 0;
+    right: 0;
+    left: 30%;
+    bottom: 0;
+    z-index: -3;
+}
+

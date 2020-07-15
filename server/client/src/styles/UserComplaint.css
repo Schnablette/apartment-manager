@@ -4,7 +4,7 @@
     background-position: center;
     position: absolute;
     width: 70%;
-    height: 100%;
+    height: 130%;
     float: right;
     top: 0;
     right: 0;
@@ -39,7 +39,7 @@ label, select {
     
 }
 
-#myList {
+.myList {
     color: grey;
     border-radius: 5px;
     padding: 5px;
@@ -68,6 +68,20 @@ option {
     color: grey;
 }
 
-#description {
+.description {
     width: 90%;
 }
+
+.moduleForm button {
+    background-color: var(--bright);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    font-weight: 100;
+    color: white;
+    display: block;
+    margin: 15px auto 0 auto;
+}
+
+
