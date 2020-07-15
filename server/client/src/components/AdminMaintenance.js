@@ -9,9 +9,27 @@ class AdminMaintenance extends React.Component {
     componentDidMount() {
         this.props.getMaintenance()
     }
+
+    
     
     renderTable() {
+        return this.props.maintenance.map((singleMaintenance) => {
+            let statusColor = () => {
+                if (singleMaintenance.status == true) {
+                    return "var(--main)"
+                } else return "var(--bright-light)"
+            }
 
+            return (
+                <tr>
+                    <td>{singleMaintenance.date}</td>
+                    <td>{singleMaintenance.aptNumber}</td>
+                    <td>{singleMaintenance.room}</td>
+                    <td className="description">{singleMaintenance.description}</td>
+                    <td><button className="completeButton" style={{backgroundColor: statusColor()}}></button></td>
+                </tr>
+            )
+        })
     }
     
     render() {
@@ -23,7 +41,7 @@ class AdminMaintenance extends React.Component {
                     <table>
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Date</th>
                                 <th>Apt #</th>
                                 <th>Room</th>
                                 <th>Description</th>
@@ -31,20 +49,7 @@ class AdminMaintenance extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>234</td>
-                            <td>201</td>
-                            <td>Bathroom 1</td>
-                            <td className="description">Here's a the greta garbo of hongkong. On anyone else taht pink would look bad, but that's the man everyone here wants to talk to.</td>
-                            <td><button className="completeButton"></button></td>
-                        </tr>
-                        <tr>
-                            <td>143</td>
-                            <td>421</td>
-                            <td>Master Bedroom</td>
-                            <td className="description">Eleanor knows exactly what's she doing. Clearly delighting in the attention she's getting. Look Philip, it's Rachel Chu. Philip asked with a wink. We headed home soon after you left</td>
-                            <td><button className="completeButton"></button></td>
-                        </tr>
+                        {this.renderTable()}
                         </tbody>
                     </table>
                 </div>
