@@ -1,4 +1,53 @@
-#userHome {
-    z-index: -2;
+#logo {
+    padding: 5px 10px;
+    margin: 0;
+    color: white;
+    background-color: var(--main);
+}
+
+/* .userHomeModule {
+    width: 46%;
+    height: 550px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 1px 25px;
+    margin: 0 auto;
+    border-radius: 20px;
     position: relative;
+    display: inline-block;
+} */
+
+#welcome {
+    text-align: center;
+    color: var(--main);
+    font-size: 6em; 
+    margin: 100px 0 0 0;
+    
+}
+
+#userHome button {
+    width: 25%;
+    height: 75px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--bright);
+    color: white;
+    font-size: 20px;
+    margin: 50px 0 0 0;
+}
+
+#userHome button:hover {
+    background-color: var(--bright-dark);
+}
+
+#userHome a:nth-child(1) {
+    margin-left: 22%;
+}
+
+#userHome a:nth-child(2) {
+    margin-left: 6%;
+}
+
+.instructions {
+    text-align: center;
 }
