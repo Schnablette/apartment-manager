@@ -4,7 +4,7 @@ const Tenant = require("./models/tenantSchema");
 const moment = require("moment");
 
 module.exports = function(app) {
-  app.get('/maintenance', (req, res, next) => {
+  app.get('/api/maintenance', (req, res, next) => {
     // get all maintenance reports
     Maintenance.find({}).exec((err, allMaintenance) => {
       if (err) {

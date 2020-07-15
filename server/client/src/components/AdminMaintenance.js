@@ -1,8 +1,15 @@
 import React from 'react';
 import "../styles/AdminMaintenance.css";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import AdminNav from "./AdminNav";
+import { getMaintenance } from "../actions/index";
 
 class AdminMaintenance extends React.Component {
+    componentDidMount() {
+        this.props.getMaintenance()
+    }
+    
     renderTable() {
 
     }
@@ -47,4 +54,12 @@ class AdminMaintenance extends React.Component {
 }
 
 
-export default AdminMaintenance;
+function mapStateToProps(state) {
+    return { maintenance: state.maintenance };
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ getMaintenance }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminMaintenance);
