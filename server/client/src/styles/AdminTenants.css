@@ -1,0 +1,11 @@
+#tenantTableHead th:nth-child(1) {
+    width: 15%;
+  }
+
+#tenantTableHead th:nth-child(2) {
+width: 10%;
+}
+
+#tenantTableHead th:nth-child(3) {
+width: 75%;
+}

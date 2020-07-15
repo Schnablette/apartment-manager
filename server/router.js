@@ -14,7 +14,7 @@ module.exports = function(app) {
     })
   })
 
-  app.post('/maintenance', (req, res, next) => {
+  app.post('/api/maintenance', (req, res, next) => {
     // post a maintenance report
     let bodyParams = req.body
 
@@ -40,7 +40,7 @@ module.exports = function(app) {
     })
   })
 
-  app.post('/complaints', (req, res, next) => {
+  app.post('/api/complaints', (req, res, next) => {
     // post a complaint report
     let bodyParams = req.body
 
@@ -56,9 +56,9 @@ module.exports = function(app) {
     res.json('successful complaint saved')
   })
 
-  app.get('/tenants', (req, res, next) => {
+  app.get('/api/tenants', (req, res, next) => {
     // get all tenants
-    Tenant.find({}).exec((err, allTenants) => {
+    Tenant.find({}).sort('aptNumber').exec((err, allTenants) => {
       if (err) {
         res.send(err)
       }
@@ -66,7 +66,7 @@ module.exports = function(app) {
     })
   })
 
-  app.post('/tenants', (req, res, next) => {
+  app.post('/api/tenants', (req, res, next) => {
     // post a complaint report
     let bodyParams = req.body
 

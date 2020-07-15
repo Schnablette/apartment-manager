@@ -29,7 +29,7 @@ class AdminComplaints extends React.Component {
             <div>
                 <AdminNav />
                 <div className="module">
-                    <h1>Maintenance Requests</h1>
+                    <h1>Complaint Forms</h1>
                     <table>
                         <thead id="complaintTableHead">
                             <tr>
