@@ -1,14 +1,54 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom"
 import "../styles/UserMaintenance.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import NavBarUser from './NavBarUser';
-import plant from '../assets/green-plant.png'
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { postMaintenance } from "../actions/index";
+import { Redirect } from 'react-router';
 
 class UserMaintenance extends Component {
+    constructor() {
+        super()
+
+        this.state = {
+            aptNumber: "",
+            room: "",
+            description: "",
+            redirect: false
+        }
+    }
+
+    updateApt(event) {
+        this.setState({aptNumber: event.target.value}, () => {
+            console.log("aptNumber changed to " + this.state.aptNumber)
+        })
+    }
+
+    updateDesc(event) {
+        this.setState({description: event.target.value}, () => {
+            console.log("aptNumber changed to " + this.state.aptNumber)
+        })
+    }
+
+    updateRoom(event) {
+        this.setState({room: event.target.value}, () => {
+            console.log("aptNumber changed to " + this.state.room)
+        })
+    }
+
+    submitMaintenance() {
+        this.props.postMaintenance(this.state.aptNumber, this.state.room, this.state.description)
+        alert("maintenance report submitted")
+        this.setState({redirect: true})
+    }
+
 
     render() {
+        if (this.state.redirect === true) {
+            return (
+                <Redirect to="/user" />
+            )
+        }
+
         return (
             <div id="userMaintenance">
                 <a href="/user"><h1 className="logo">Namely</h1></a>
@@ -17,10 +57,11 @@ class UserMaintenance extends Component {
                     <h1>Resident Maintenance Request</h1>
                     <form role="form" id="complaintForm">
                         <label>Your Apartment</label>
-                        <input type="text" placeholder="Apt #" className="apt" />
+                        <input type="text" placeholder="Apt #" className="apt" onChange={this.updateApt.bind(this)} max={3}/>
                         <br/>
                         <label>Room</label>
-                        <select className="myList">
+                        <select className="myList" onChange={this.updateRoom.bind(this)}>
+                            <option value=""></option>
                             <option value="master bedroom">Master Bedroom</option>
                             <option value="bedroom 1">Bedroom 1</option>
                             <option value="bedroom 2">Bedroom 2</option>
@@ -31,9 +72,9 @@ class UserMaintenance extends Component {
                         </select>
                         <br/>
                         <label>Description</label>
-                        <input type="text" placeholder="Description" className="description" />
+                        <input type="text" placeholder="Description" className="description" onChange={this.updateDesc.bind(this)}/>
                         <br/>
-                        <button>Submit</button>
+                        <button onClick={this.submitMaintenance.bind(this)}>Submit</button>
                     </form>
                 </div>
             </div>
@@ -41,6 +82,8 @@ class UserMaintenance extends Component {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ postMaintenance }, dispatch);
+}
 
-export default UserMaintenance;
-
+export default connect(null, mapDispatchToProps)(UserMaintenance);
