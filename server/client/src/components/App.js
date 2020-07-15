@@ -9,6 +9,8 @@ import AdminReports from "./AdminReports";
 import AdminMaintenance from './AdminMaintenance';
 import AdminComplaints from './AdminComplaints';
 import AdminTenants from './AdminTenants';
+import UserComplaint from './UserComplaint';
+import UserMaintenance from './UserMaintenance';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path={"/admin/maintenance"} component={AdminMaintenance} />
         <Route path={"/admin/complaints"} component={AdminComplaints} />
         <Route path={"/admin/tenants"} component={AdminTenants} />
+        <Route path={"/user/complaint"} component={UserComplaint} />
+        <Route path={"/user/maintenance"} component={UserMaintenance} />
       </Switch>
     </div>
   );
