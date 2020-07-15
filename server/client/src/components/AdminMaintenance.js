@@ -21,7 +21,7 @@ class AdminMaintenance extends React.Component {
             }
 
             return (
-                <tr>
+                <tr key={singleMaintenance._id}>
                     <td>{singleMaintenance.date}</td>
                     <td>{singleMaintenance.aptNumber}</td>
                     <td>{singleMaintenance.room}</td>
@@ -39,7 +39,7 @@ class AdminMaintenance extends React.Component {
                 <div className="module">
                     <h1>Maintenance Requests</h1>
                     <table>
-                        <thead>
+                        <thead id="maintenanceTableHead">
                             <tr>
                                 <th>Date</th>
                                 <th>Apt #</th>

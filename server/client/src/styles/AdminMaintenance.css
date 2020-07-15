@@ -28,52 +28,52 @@ table {
     height: 50px;
   }
 
-  thead th:nth-child(1) {
-    width: 15%;
-  }
+#maintenanceTableHead th:nth-child(1) {
+  width: 15%;
+}
+
+#maintenanceTableHead th:nth-child(2) {
+  width: 10%;
+}
+
+#maintenanceTableHead th:nth-child(3) {
+  width: 20%;
+}
+
+#maintenanceTableHead th:nth-child(4) {
+  width: 50%;
+}
+
+#maintenanceTableHead th:nth-child(5) {
+  width: 10%;
+}
   
-  thead th:nth-child(2) {
-    width: 10%;
-  }
-  
-  thead th:nth-child(3) {
-    width: 20%;
-  }
-  
-  thead th:nth-child(4) {
-    width: 50%;
-  }
+th, td {
+  padding: 20px;
+}
 
-  thead th:nth-child(5) {
-    width: 10%;
-  }
-  
-  th, td {
-    padding: 20px;
-  }
+tbody td {
+  text-align: center;
+}
 
-  tbody td {
-    text-align: center;
-  }
+tbody tr:nth-child(odd) {
+  background-color: ghostwhite;
+}
 
-  tbody tr:nth-child(odd) {
-    background-color: ghostwhite;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: white;
-  }
+tbody tr:nth-child(even) {
+  background-color: white;
+}
 
-  .description {
-      text-align: left;
-  }
+.description {
+    text-align: left;
+}
 
-  td button {
-      height: 25px;
-      width: 25px;
-  }
+td button {
+    height: 25px;
+    width: 25px;
+}
 
-  .completeButton {
-    border: none;
-    border-radius: 20px;
-  }
+.completeButton {
+  border: none;
+  border-radius: 20px;
+}

@@ -30,7 +30,7 @@ module.exports = function(app) {
     res.json('successful maintenance report saved')
   })
 
-  app.get('/complaints', (req, res, next) => {
+  app.get('/api/complaints', (req, res, next) => {
     // get all complaints
     Complaint.find({}).exec((err, allComplaints) => {
       if (err) {

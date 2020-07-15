@@ -215,7 +215,7 @@ let c11 = new Complaint ({
     problemApt: 206,
     aptNumber: 205,
     type: "smell",
-    description: "It honestly smells like something died in room 205",
+    description: "It honestly smells like something died in room 206",
     date: moment().format("MM-DD-YYYY")
 })
 
