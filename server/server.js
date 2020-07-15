@@ -18,7 +18,7 @@ mongoose.connect(keys.MONGODB_URI);
 
 app.use(cors());
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 router(app);
 
