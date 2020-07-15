@@ -10,18 +10,8 @@ class UserMaintenance extends Component {
 
     render() {
         return (
-            <div>
-                <h1 id="logo">Namely</h1>
-                <h1 id="welcome">Welcome Hill<br/>Valley Resident</h1>
-                <p className="instructions">Select an option to begin.</p>
-                <div id="userHome">
-                    <a href="/user/maintenance">
-                        <button>Write a<br/>Maintenance Report</button>
-                    </a>
-                    <a href="/user/complaint">
-                        <button>File a <br/> Resident Complaint</button>
-                    </a>
-                </div>
+            <div id="userMaintenance">
+                
             </div>
         )
     }

@@ -10,17 +10,43 @@ class UserComplaint extends Component {
 
     render() {
         return (
-            <div>
-                <h1 id="logo">Namely</h1>
-                <h1 id="welcome">Welcome Hill<br/>Valley Resident</h1>
-                <p className="instructions">Select an option to begin.</p>
-                <div id="userHome">
-                    <a href="/user/maintenance">
-                        <button>Write a<br/>Maintenance Report</button>
-                    </a>
-                    <a href="/user/complaint">
-                        <button>File a <br/> Resident Complaint</button>
-                    </a>
+            <div id="userComplaint">
+                <h1 className="logo">Namely</h1>
+                <div className="moduleForm" id="complaintForm">
+                    <h1>Resident Complaint Form</h1>
+                    <form role="form" novalidate>
+                        <label>Email address</label>
+                        <input type="text" placeholder="Enter email" />
+                        <br/>
+                        <label>Email address</label>
+                        <input type="dropdown" placeholder="Enter email" />
+                        <br/>
+                        <label>Email address</label>
+                        <input type="text" placeholder="Enter email" />
+                        <br/>
+                    </form>
+                    {/* <Form>
+                        <Form.Group className="formGroup" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Your Apartment Number</Form.Label>
+                            <Form.Control size="lg" className="formElements" type="text" placeholder="Apt Number" />
+                        </Form.Group>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Type of Complaint</Form.Label>
+                            <Form.Control size="lg" className="formElements" as="select">
+                            <option>Noise</option>
+                            <option>Smell</option>
+                            <option>Other</option>
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Offending Apartment Number</Form.Label>
+                            <Form.Control size="lg" className="formElements" type="text" placeholder="Apt Number" />
+                        </Form.Group>
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Description of Offense</Form.Label>
+                            <Form.Control size="lg" className="formElements" as="textarea" rows="3" />
+                        </Form.Group>
+                    </Form> */}
                 </div>
             </div>
         )

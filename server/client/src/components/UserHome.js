@@ -19,7 +19,7 @@ class UserHome extends Component {
     render() {
         return (
             <div>
-                <h1 id="logo">Namely</h1>
+                <h1 className="logo">Namely</h1>
                 <h1 id="welcome">Welcome Hill<br/>Valley Resident</h1>
                 <p className="instructions">Select an option to begin.</p>
                 <div id="userHome">
