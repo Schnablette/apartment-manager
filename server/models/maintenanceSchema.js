@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const maintenanceSchema = new Schema({
   status: Boolean,
-  _id: Number,
   aptNumber: Number,
   description: String,
-  date: Date
+  room: String,
+  date: String
 })
 
 const Maintenance = mongoose.model('maintenance', maintenanceSchema);

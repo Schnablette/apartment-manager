@@ -6,6 +6,7 @@ const router = require('./router');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const keys = require('./config/keys');
+const moment = require("moment");
 
 // Schemas
 const Complaint = require("./models/complaintSchema");
@@ -127,3 +128,77 @@ let shamus = new Tenant ({
 // fred.save()
 // george.save()
 // shamus.save()
+
+let m1 = new Maintenance({
+    status: false,
+    aptNumber: 201,
+    room: "bathroom 1",
+    description: "Toilet will not stop flushing. Please help.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let m2 = new Maintenance({
+    status: false,
+    aptNumber: 103,
+    room: "kitchen",
+    description: "The garbage disposal won't work. Making weird sound.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let m3 = new Maintenance({
+    status: false,
+    aptNumber: 103,
+    room: "master bedroom",
+    description: "Crown molding falling down off the wall.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let m4 = new Maintenance({
+    status: true,
+    aptNumber: 101,
+    room: "living room",
+    description: "Cable port has broken off the wall.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let m5 = new Maintenance({
+    status: false,
+    aptNumber: 302,
+    room: "bathroom 2",
+    description: "Sink won't drain for some reason.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let m6 = new Maintenance({
+    status: false,
+    aptNumber: 301,
+    room: "kitchen",
+    description: "Counter vinyl peeling off the corner of the rightmost countertop.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let m7 = new Maintenance({
+    status: false,
+    aptNumber: 301,
+    room: "living room",
+    description: "Shutters stuck and won't come down.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let m8 = new Maintenance({
+    status: false,
+    aptNumber: 301,
+    room: "bedroom",
+    description: "Paint is peeling off the wall in the closet.",
+    date: moment().format("MM-DD-YYYY")
+})
+  
+
+// m1.save()
+// m2.save()
+// m3.save()
+// m4.save()
+// m5.save()
+// m6.save()
+// m7.save()
+// m8.save()
