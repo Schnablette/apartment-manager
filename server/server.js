@@ -202,3 +202,69 @@ let m8 = new Maintenance({
 // m6.save()
 // m7.save()
 // m8.save()
+
+let c1 = new Complaint ({
+    problemApt: 101,
+    aptNumber: 102,
+    type: "noise",
+    description: "Harry's apartment will not stop bumping loud music at all hours of the night. I'm writing this at 10:30pm, and he's blasting Nicki Minaj.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let c11 = new Complaint ({
+    problemApt: 206,
+    aptNumber: 205,
+    type: "smell",
+    description: "It honestly smells like something died in room 205",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let c2 = new Complaint ({
+    problemApt: 206,
+    aptNumber: 204,
+    type: "smell",
+    description: "Bad smell coming from room 206. Does this guy bring raw fish home?",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let c3 = new Complaint ({
+    problemApt: 206,
+    aptNumber: 205,
+    type: "noise",
+    description: "Loud sounds of incantations at 11 o' clock. This person is impossible to live next to",
+    date: moment().format("MM-DD-YYYY")
+})
+
+
+let c4 = new Complaint ({
+    problemApt: 105,
+    aptNumber: 104,
+    type: "noise",
+    description: "I know it's only noon, but this person is having a shouting match with her cat. Obnoxious.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let c5 = new Complaint ({
+    problemApt: 302,
+    aptNumber: 303,
+    type: "smell",
+    description: "I dont know what this person is cooking, but it constantly smells like smoke.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+let c6 = new Complaint ({
+    problemApt: 206,
+    aptNumber: 201,
+    type: "other",
+    description: "Tom is extremely unpleasant. I offered to help him carry in groceries, and he just hissed at me. Plus, he threatened to kill my rabbit.",
+    date: moment().format("MM-DD-YYYY")
+})
+
+// c1.save()
+// c11.save()
+// c2.save()
+// c3.save()
+// c4.save()
+// c5.save()
+// c6.save()
+

@@ -2,12 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const complaintSchema = new Schema({
-  problemApt: String,
-  _id: Number,
+  problemApt: Number,
   aptNumber: Number,
   type: String,
   description: String,
-  date: Date
+  date: String
 })
 
 const Complaint = mongoose.model('complaint', complaintSchema);
