@@ -11,8 +11,8 @@ module.exports = function(app) {
         res.send(err)
       }
       res.send(allMaintenance)
-    })
-  })
+    });
+  });
 
   app.post('/api/maintenance', (req, res, next) => {
     // post a maintenance report
@@ -24,11 +24,11 @@ module.exports = function(app) {
       description: bodyParams.description,
       room: bodyParams.room,
       date: moment().format("MM-DD-YYYY")
-    })
+    });
 
     newMaintenance.save()
     res.json('successful maintenance report saved')
-  })
+  });
 
   app.get('/api/complaints', (req, res, next) => {
     // get all complaints
@@ -37,8 +37,8 @@ module.exports = function(app) {
         res.send(err)
       }
       res.send(allComplaints)
-    })
-  })
+    });
+  });
 
   app.post('/api/complaints', (req, res, next) => {
     // post a complaint report
@@ -50,11 +50,11 @@ module.exports = function(app) {
       date: moment().format("MM-DD-YYYY"),
       problemApt: bodyParams.problemApt,
       type: bodyParams.type
-    })
+    });
 
     newComplaint.save()
     res.json('successful complaint saved')
-  })
+  });
 
   app.get('/api/tenants', (req, res, next) => {
     // get all tenants
@@ -63,21 +63,41 @@ module.exports = function(app) {
         res.send(err)
       }
       res.send(allTenants)
-    })
-  })
+    });
+  });
 
   app.post('/api/tenants', (req, res, next) => {
-    // post a complaint report
+    // post a new tenant
     let bodyParams = req.body
 
     let newTenant = new Tenant({
       name: bodyParams.name,
       aptNumber: bodyParams.aptNumber,
       tenants: bodyParams.tenants
-    })
+    });
 
     newTenant.save()
     res.json('successful tenant saved')
-  })
+  });
 
+  app.patch('/api/maintenance/status', (req, res, next) => {
+    // change the boolean status of a maintenance report
+    id = req.body._id
+    status = req.body.status
+
+    if (status == "false") {
+      Maintenance.updateOne({ _id: id }, { status: true }).exec((err, result) => {
+        if (err) {
+          throw err
+        } else res.json(result);
+      });
+    } else {
+      Maintenance.updateOne({ _id: id }, { status: false }).exec((err, result) => {
+        if (err) {
+          throw err
+        } else res.json(result);
+      });
+    }
+
+  });
 }

@@ -5,6 +5,7 @@ export const GET_COMPLAINTS = "GET_COMPLAINTS";
 export const GET_TENANTS = "GET_TENANTS";
 export const POST_MAINTENANCE = "POST_MAINTENANCE";
 export const POST_COMPLAINTS = "POST_COMPLAINTS";
+export const CHANGE_STATUS = "CHANGE_STATUS";
 
 const ROOT_URL = process.env.baseURL || "http://localhost:8000"
 
@@ -71,6 +72,23 @@ export function postComplaints(aptNumber, problemApt, type, description) {
 
     return {
         type: POST_COMPLAINTS,
+        payload: request,
+    };
+}
+
+export function changeStatus(id, status) {
+    const url = `${ROOT_URL}/api/maintenance/status`;
+    const request = axios({
+        method: "patch",
+        url: url,
+        data: {
+            _id: id,
+            status: status
+        }
+    });
+
+    return {
+        type: CHANGE_STATUS,
         payload: request,
     };
 }

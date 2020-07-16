@@ -3,14 +3,22 @@ import "../styles/AdminMaintenance.css";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import AdminNav from "./AdminNav";
-import { getMaintenance } from "../actions/index";
+import { getMaintenance, changeStatus } from "../actions/index";
 
 class AdminMaintenance extends React.Component {
     componentDidMount() {
         this.props.getMaintenance()
     }
 
-    
+    changeColor(event) {
+        let id = event.target.parentElement.parentElement.id
+        let status = event.target.id
+        this.props.changeStatus(id, status)
+    }
+
+    componentDidUpdate() {
+        this.props.getMaintenance()
+    }
     
     renderTable() {
         return this.props.maintenance.map((singleMaintenance) => {
@@ -21,12 +29,12 @@ class AdminMaintenance extends React.Component {
             }
 
             return (
-                <tr key={singleMaintenance._id}>
+                <tr id={singleMaintenance._id} key={singleMaintenance._id}>
                     <td>{singleMaintenance.date}</td>
                     <td>{singleMaintenance.aptNumber}</td>
                     <td>{singleMaintenance.room}</td>
                     <td className="description">{singleMaintenance.description}</td>
-                    <td><button className="completeButton" style={{backgroundColor: statusColor()}}></button></td>
+                    <td><button id={singleMaintenance.status.toString()} className="completeButton" onClick={this.changeColor.bind(this)} style={{backgroundColor: statusColor()}}></button></td>
                 </tr>
             )
         })
@@ -64,7 +72,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ getMaintenance }, dispatch);
+    return bindActionCreators({ getMaintenance, changeStatus }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminMaintenance);
