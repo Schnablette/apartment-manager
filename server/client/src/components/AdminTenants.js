@@ -27,7 +27,7 @@ class AdminTenants extends React.Component {
             <div>
                 <AdminNav />
                 <div className="module">
-                    <h1>Complaint Forms</h1>
+                    <h1>Tenants</h1>
                     <table>
                         <thead id="tenantTableHead">
                             <tr>

@@ -15,7 +15,7 @@ class SiteHome extends React.Component {
                             <h2>Resident</h2>
                         </div>
                     </Link>
-                    <Link to="/admin" style={{ textDecoration: 'none' }}>
+                    <Link to="/admin/reports" style={{ textDecoration: 'none' }}>
                         <div id="adminPanel">
                             <h2>Admin</h2>
                         </div>
