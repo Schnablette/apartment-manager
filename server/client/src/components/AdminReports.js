@@ -27,8 +27,23 @@ class AdminReports extends Component {
         return 325;
       } else if (apt === 204) {
         return 386;
-      } else return 200
-
+      } else if (apt === 205) {
+        return 446;
+      } else if (apt === 206) {
+        return 506;
+      } else if (apt === 101 || apt === 106) {
+        return 138;
+      } else if (apt === 102 || apt === 105) {
+        return 133;
+      } else if (apt === 103 || apt === 104) {
+        return 123;
+      } else if (apt === 301 || apt === 306) {
+          return 574;
+      } else if (apt === 302 || apt === 305) {
+          return 579;
+      } else if (apt === 303 || apt === 304) {
+          return 589;
+      }
     }
 
     yValue() {
@@ -62,19 +77,19 @@ class AdminReports extends Component {
         })
       })
 
-      const uniqueMaintenanceData = maintenanceData.reduce((accum, elem) => {
-        const existing = accum.find(item => item.aptNumber === elem.aptNumber);
-        if (!existing) {
-          return accum.concat([elem])
-        } else return accum;
-      }, [])
+      // without this reducer function, the opacity of the d3 circles builds nice depth
+
+      // const uniqueMaintenanceData = maintenanceData.reduce((accum, elem) => {
+      //   const existing = accum.find(item => item.aptNumber === elem.aptNumber);
+      //   if (!existing) {
+      //     return accum.concat([elem])
+      //   } else return accum;
+      // }, [])
 
       // make it a global variable
-      this.uniqueMaintenanceData = uniqueMaintenanceData;
-    }
-
-    message() {
-      console.log(this.uniqueMaintenanceData)
+      this.data = maintenanceData;
+    
+      this.renderD3svg()
     }
 
     renderD3svg() {
@@ -85,11 +100,13 @@ class AdminReports extends Component {
       let newX = 300;
 
       svg.selectAll("circle")
-        .data(this.uniqueMaintenanceData)
+        .data(this.data)
         .enter().append('circle')
                 .attr("cx", d => { return d.x })
                 .attr("cy", d => { return d.y })
                 .attr("r", d => { return d.data * 15 })
+                .attr("fill", "var(--bright)")
+                .attr("opacity", ".3")
     } 
 
     render() {
@@ -141,9 +158,9 @@ class AdminReports extends Component {
                           <text className="section" transform="matrix(1 0 0 1 475.6699 313.4097)">3</text>
                           <text className="section" transform="matrix(1 0 0 1 338.6909 188.5688)">2</text>
                         </svg>
-                        <svg id="circles" ref={node => this.node = node} width="100%" height="500px"></svg>
-                        <button id="tenants-button" onClick={this.parseMaintenanceData.bind(this)}>tenants</button>
-                        <button id="maintenance-button" onClick={this.renderD3svg.bind(this)} >maintenance</button>
+                        <svg id="circles" ref={node => this.node = node} width="100%" height="520"></svg>
+                        <button id="tenants-button" >tenants</button>
+                        <button id="maintenance-button" onClick={this.parseMaintenanceData.bind(this)} >maintenance</button>
                         <button id="complaints-button">complaints</button>
                     </div>
                 </div>
