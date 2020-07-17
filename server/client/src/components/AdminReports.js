@@ -46,9 +46,26 @@ class AdminReports extends Component {
       }
     }
 
-    yValue() {
-      // all apartment y values
-      return 200;
+    yValue(apt) {
+      if (apt === 201 || apt === 206) {
+        return 110;
+      } else if (apt === 202 || apt === 205) {
+        return 100;
+      } else if (apt === 203 || apt === 204) {
+        return 95;
+      } else if (apt === 101 || apt === 301) {
+        return 462;
+      } else if (apt === 102 || apt === 302) {
+        return 412;
+      } else if (apt === 103 || apt === 303) {
+        return 352;
+      } else if (apt === 104 || apt === 304) {
+        return 302;
+      } else if (apt === 105 || apt === 305) {
+        return 252;
+      } else if (apt === 106 || apt === 306) {
+        return 202;
+      } 
     }
 
     parseMaintenanceData() {
