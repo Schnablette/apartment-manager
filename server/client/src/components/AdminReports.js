@@ -4,7 +4,7 @@ import AdminNav from "./AdminNav";
 import * as d3 from "d3";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getMaintenance, getTenants } from "../actions/index";
+import { getMaintenance, getTenants, getComplaints } from "../actions/index";
 
 
 class AdminReports extends Component {
@@ -13,6 +13,7 @@ class AdminReports extends Component {
       // kick off data by getting it at start of mount
       this.props.getMaintenance()
       this.props.getTenants()
+      this.props.getComplaints()
     }
 
     componentDidUpdate() {
@@ -63,9 +64,9 @@ class AdminReports extends Component {
       } else if (apt === 104 || apt === 303) {
         return 302;
       } else if (apt === 105 || apt === 302) {
-        return 252;
+        return 247;
       } else if (apt === 106 || apt === 301) {
-        return 202;
+        return 192;
       } 
     }
 
@@ -91,7 +92,7 @@ class AdminReports extends Component {
           x: this.xValue(singleElem.aptNumber),
           y: this.yValue(singleElem.aptNumber),
           // data is the data we want for d3 circle radius
-          data: data[singleElem.aptNumber]
+          data: { data: data[singleElem.aptNumber], color: "var(--bright)" }
         })
       })
 
@@ -110,18 +111,6 @@ class AdminReports extends Component {
     }
 
     parseTenantData() {
-      const data = this.props.tenants.reduce((accum, singleElem) => {
-        // find out how many times each apartment had a maintenance order
-        if (!accum[singleElem.aptNumber]) {
-          // if apartment number doesn't exist in the accumulator, create it and set it equal to one
-          accum[singleElem.aptNumber] = 1;
-        } else {
-          // else add one
-          accum[singleElem.aptNumber] = accum[singleElem.aptNumber] + 1;
-        }
-        return accum;
-        // comes out { aptNumber: numberOfTimesMaintenanceNeedReported }
-      }, {})
       
       const tenantsData = this.props.tenants.map(singleElem => {
         // return data as you like it
@@ -131,7 +120,7 @@ class AdminReports extends Component {
           x: this.xValue(singleElem.aptNumber),
           y: this.yValue(singleElem.aptNumber),
           // data is the data we want for d3 circle radius
-          data: data[singleElem.aptNumber]
+          data: { data: singleElem.tenants, color: "var(--main)" }
         })
       })
 
@@ -149,6 +138,48 @@ class AdminReports extends Component {
       this.renderD3svg()
     }
 
+    parseComplaintData() {
+      const data = this.props.complaints.reduce((accum, singleElem) => {
+        // find out how many times each apartment had a maintenance order
+        if (!accum[singleElem.problemApt]) {
+          // if apartment number doesn't exist in the accumulator, create it and set it equal to one
+          accum[singleElem.problemApt] = 1;
+        } else {
+          // else add one
+          accum[singleElem.problemApt] = accum[singleElem.problemApt] + 1;
+        }
+        return accum;
+        // comes out { problemApt: numberOfTimesMaintenanceNeedReported }
+      }, {})
+
+      console.log(data)
+      
+      const complaintData = this.props.complaints.map(singleElem => {
+        // return data as you like it
+        return ({
+          aptNumber: singleElem.problemApt,
+          // x and y coordinates to place d3 circle exactly on top of apartment
+          x: this.xValue(singleElem.problemApt),
+          y: this.yValue(singleElem.problemApt),
+          // data is the data we want for d3 circle radius
+          data: { data: data[singleElem.problemApt], color: "var(--bright)" }
+        })
+      })
+
+      // without this reducer function, the opacity of the d3 circles builds nice depth
+
+      // const uniqueMaintenanceData = maintenanceData.reduce((accum, elem) => {
+      //   const existing = accum.find(item => item.aptNumber === elem.aptNumber);
+      //   if (!existing) {
+      //     return accum.concat([elem])
+      //   } else return accum;
+      // }, [])
+
+      // make it a global variable
+      this.data = complaintData;
+      this.renderD3svg()
+    }
+
     renderD3svg() {
       console.log(this.node)
       let svg = d3.select(this.node)
@@ -162,9 +193,21 @@ class AdminReports extends Component {
         .enter().append('circle')
                 .attr("cx", d => { return d.x })
                 .attr("cy", d => { return d.y })
-                .attr("r", d => { return d.data * 15 })
-                .attr("fill", "var(--bright)")
+                .attr("r", d => { return d.data.data * 10 })
+                .attr("fill", d => { return d.data.color})
                 .attr("opacity", ".3")
+                .attr("z-index", "5")
+                .on("mouseover", function(d) {
+                  svg.append("circle")
+                    .attr("d", d3.select(this).attr("d"))
+                    .attr("id", "arcSelection")
+                    .style("fill", "none")
+                    .style("stroke", "#fff")
+                    .style("stroke-width", 2);
+              })
+              .on("mouseout", function(d) {
+                  d3.select("#arcSelection").remove();
+              });
     } 
 
     render() {
@@ -219,7 +262,7 @@ class AdminReports extends Component {
                         <svg id="circles" ref={node => this.node = node} width="100%" height="520"></svg>
                         <button id="tenants-button" onClick={this.parseTenantData.bind(this)}>tenants</button>
                         <button id="maintenance-button" onClick={this.parseMaintenanceData.bind(this)} >maintenance</button>
-                        <button id="complaints-button">complaints</button>
+                        <button id="complaints-button" onClick={this.parseComplaintData.bind(this)}>complaints</button>
                     </div>
                 </div>
             </div>
@@ -228,11 +271,13 @@ class AdminReports extends Component {
 }
 
 function mapStateToProps(state) {
-  return { maintenance: state.maintenance, tenants: state.tenants };
+  return {  maintenance: state.maintenance, 
+            tenants: state.tenants,
+            complaints: state.complaints };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getMaintenance, getTenants }, dispatch);
+  return bindActionCreators({ getMaintenance, getTenants, getComplaints }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminReports);
