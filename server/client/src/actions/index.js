@@ -7,10 +7,8 @@ export const POST_MAINTENANCE = "POST_MAINTENANCE";
 export const POST_COMPLAINTS = "POST_COMPLAINTS";
 export const CHANGE_STATUS = "CHANGE_STATUS";
 
-const ROOT_URL = process.env.baseURL || "http://localhost:8000"
-
 export function getMaintenance() {
-  const url = `${ROOT_URL}/api/maintenance`;
+  const url = `/api/maintenance`;
   const request = axios.get(url);
 
   return {
@@ -20,7 +18,7 @@ export function getMaintenance() {
 }
 
 export function getComplaints() {
-    const url = `${ROOT_URL}/api/complaints`;
+    const url = `/api/complaints`;
     const request = axios.get(url);
 
     return {
@@ -30,7 +28,7 @@ export function getComplaints() {
 }
 
 export function getTenants() {
-    const url = `${ROOT_URL}/api/tenants`;
+    const url = `/api/tenants`;
     const request = axios.get(url);
 
     return {
@@ -40,7 +38,7 @@ export function getTenants() {
 }
 
 export function postMaintenance(aptNumber, room, description) {
-    const url = `${ROOT_URL}/api/maintenance`;
+    const url = `/api/maintenance`;
     const request = axios({
         method: "post",
         url: url,
@@ -58,7 +56,7 @@ export function postMaintenance(aptNumber, room, description) {
 }
 
 export function postComplaints(aptNumber, problemApt, type, description) {
-    const url = `${ROOT_URL}/api/complaints`;
+    const url = `/api/complaints`;
     const request = axios({
         method: "post",
         url: url,
@@ -77,7 +75,7 @@ export function postComplaints(aptNumber, problemApt, type, description) {
 }
 
 export function changeStatus(id, status) {
-    const url = `${ROOT_URL}/api/maintenance/status`;
+    const url = `/api/maintenance/status`;
     const request = axios({
         method: "patch",
         url: url,
