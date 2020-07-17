@@ -12,11 +12,9 @@ class AdminReports extends Component {
     componentDidMount() {
       // kick off data by getting it at start of mount
       this.props.getMaintenance()
-      this.renderD3svg()
     }
 
     componentDidUpdate() {
-      this.renderD3svg()
     }
 
     xValue(apt) {
@@ -64,15 +62,19 @@ class AdminReports extends Component {
         })
       })
 
-      const uniqueMaintenaceData = maintenanceData.reduce((accum, elem) => {
-        
-      })
-      // make a global variable
-      this.maintenanceData = maintenanceData;
+      const uniqueMaintenanceData = maintenanceData.reduce((accum, elem) => {
+        const existing = accum.find(item => item.aptNumber === elem.aptNumber);
+        if (!existing) {
+          return accum.concat([elem])
+        } else return accum;
+      }, [])
+
+      // make it a global variable
+      this.uniqueMaintenanceData = uniqueMaintenanceData;
     }
 
     message() {
-      console.log(this.maintenanceData)
+      console.log(this.uniqueMaintenanceData)
     }
 
     renderD3svg() {
@@ -83,13 +85,12 @@ class AdminReports extends Component {
       let newX = 300;
 
       svg.selectAll("circle")
-        .data(dataArray)
+        .data(this.uniqueMaintenanceData)
         .enter().append('circle')
-                .attr("cx", "206" )
-                .attr("cy", "110")
-                .attr("r", d => { return d })
-                .attr('stroke', 'black')
-    }
+                .attr("cx", d => { return d.x })
+                .attr("cy", d => { return d.y })
+                .attr("r", d => { return d.data * 15 })
+    } 
 
     render() {
         return (
@@ -140,9 +141,9 @@ class AdminReports extends Component {
                           <text className="section" transform="matrix(1 0 0 1 475.6699 313.4097)">3</text>
                           <text className="section" transform="matrix(1 0 0 1 338.6909 188.5688)">2</text>
                         </svg>
-                        <svg id="circles" ref={node => this.node = node} width="100%"></svg>
+                        <svg id="circles" ref={node => this.node = node} width="100%" height="500px"></svg>
                         <button id="tenants-button" onClick={this.parseMaintenanceData.bind(this)}>tenants</button>
-                        <button id="maintenance-button" onClick={this.message.bind(this)} >maintenance</button>
+                        <button id="maintenance-button" onClick={this.renderD3svg.bind(this)} >maintenance</button>
                         <button id="complaints-button">complaints</button>
                     </div>
                 </div>
