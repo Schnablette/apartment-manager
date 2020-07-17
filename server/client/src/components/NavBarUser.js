@@ -19,7 +19,7 @@ class NavBarUser extends Component {
         return (
             <div>
                 <nav id="navBar">
-                    <h1>Namely</h1>
+                    <h1>Abode</h1>
                     <button id="toggle-collapse" onClick={this.toggleNav.bind(this)}>
                         <FontAwesomeIcon id="bars" size="2x" icon={faBars} />
                     </button>

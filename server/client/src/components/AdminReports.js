@@ -196,18 +196,16 @@ class AdminReports extends Component {
                 .attr("r", d => { return d.data.data * 10 })
                 .attr("fill", d => { return d.data.color})
                 .attr("opacity", ".3")
-                .attr("z-index", "5")
-                .on("mouseover", function(d) {
-                  svg.append("circle")
-                    .attr("d", d3.select(this).attr("d"))
-                    .attr("id", "arcSelection")
-                    .style("fill", "none")
-                    .style("stroke", "#fff")
-                    .style("stroke-width", 2);
-              })
-              .on("mouseout", function(d) {
-                  d3.select("#arcSelection").remove();
-              });
+                .on('mouseover', function (d, i) {
+                  d3.select(this).transition()
+                       .duration('50')
+                       .attr('opacity', '.85');
+                })
+                .on('mouseout', function (d, i) {
+                  d3.select(this).transition()
+                       .duration('50')
+                       .attr('opacity', '1');
+                })
     } 
 
     render() {

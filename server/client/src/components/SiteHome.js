@@ -8,7 +8,7 @@ class SiteHome extends React.Component {
             <div>
                 <div className="homePic"></div>
                 <div id="homeFloat">
-                    <h1>Welcome to Namely</h1>
+                    <h1>Welcome to Abode</h1>
                     <p>Which portal are you trying to get to?</p>
                     <Link to="/user" style={{ textDecoration: 'none' }}>
                         <div id="userPanel">
