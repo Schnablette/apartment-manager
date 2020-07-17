@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import "../styles/AdminReports.css";
 import AdminNav from "./AdminNav";
 import * as d3 from "d3";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { getMaintenance, changeStatus } from "../actions/index";
 
 
 class AdminReports extends Component {
+
     componentDidMount() {
+      // kick off data by getting it at start of mount
+      this.props.getMaintenance()
       this.renderD3svg()
     }
 
@@ -13,18 +19,74 @@ class AdminReports extends Component {
       this.renderD3svg()
     }
 
+    xValue(apt) {
+      // all apartment x values
+      if ( apt === 201) {
+        return 206;
+      } else if (apt === 202) {
+        return 266;
+      } else if (apt === 203) {
+        return 325;
+      } else if (apt === 204) {
+        return 386;
+      } else return 200
+
+    }
+
+    yValue() {
+      // all apartment y values
+      return 200;
+    }
+
+    parseMaintenanceData() {
+      const data = this.props.maintenance.reduce((accum, singleMaintenance) => {
+        // find out how many times each apartment had a maintenance order
+        if (!accum[singleMaintenance.aptNumber]) {
+          // if apartment number doesn't exist in the accumulator, create it and set it equal to one
+          accum[singleMaintenance.aptNumber] = 1;
+        } else {
+          // else add one
+          accum[singleMaintenance.aptNumber] = accum[singleMaintenance.aptNumber] + 1;
+        }
+        return accum;
+        // comes out { aptNumber: numberOfTimesMaintenanceNeedReported }
+      }, {})
+      
+      const maintenanceData = this.props.maintenance.map(singleMaintenance => {
+        // return data as you like it
+        return ({
+          aptNumber: singleMaintenance.aptNumber,
+          // x and y coordinates to place d3 circle exactly on top of apartment
+          x: this.xValue(singleMaintenance.aptNumber),
+          y: this.yValue(singleMaintenance.aptNumber),
+          // data is the data we want for d3 circle radius
+          data: data[singleMaintenance.aptNumber]
+        })
+      })
+
+      const uniqueMaintenaceData = maintenanceData.reduce((accum, elem) => {
+        
+      })
+      // make a global variable
+      this.maintenanceData = maintenanceData;
+    }
+
+    message() {
+      console.log(this.maintenanceData)
+    }
+
     renderD3svg() {
       console.log(this.node)
       let svg = d3.select(this.node)
-      let dataArray = [4, 15, 12]
+      let dataArray = [15]
 
       let newX = 300;
 
       svg.selectAll("circle")
         .data(dataArray)
         .enter().append('circle')
-                .attr("cx", (d,i) => { newX+=(d*6)+(i*20); return newX; } )
-                .attr("cy", "100")
+                .attr("cx", "206" )
+                .attr("cy", "110")
                 .attr("r", d => { return d })
                 .attr('stroke', 'black')
     }
@@ -79,8 +141,8 @@ class AdminReports extends Component {
                           <text className="section" transform="matrix(1 0 0 1 338.6909 188.5688)">2</text>
                         </svg>
                         <svg id="circles" ref={node => this.node = node} width="100%"></svg>
-                        <button id="tenants-button">tenants</button>
-                        <button id="maintenance-button">maintenance</button>
+                        <button id="tenants-button" onClick={this.parseMaintenanceData.bind(this)}>tenants</button>
+                        <button id="maintenance-button" onClick={this.message.bind(this)} >maintenance</button>
                         <button id="complaints-button">complaints</button>
                     </div>
                 </div>
@@ -89,6 +151,13 @@ class AdminReports extends Component {
     }
 }
 
+function mapStateToProps(state) {
+  return { maintenance: state.maintenance };
+}
 
-export default AdminReports;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getMaintenance, changeStatus }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminReports);
 
