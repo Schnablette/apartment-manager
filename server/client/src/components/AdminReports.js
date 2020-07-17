@@ -4,7 +4,7 @@ import AdminNav from "./AdminNav";
 import * as d3 from "d3";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getMaintenance, changeStatus } from "../actions/index";
+import { getMaintenance, getTenants } from "../actions/index";
 
 
 class AdminReports extends Component {
@@ -12,6 +12,7 @@ class AdminReports extends Component {
     componentDidMount() {
       // kick off data by getting it at start of mount
       this.props.getMaintenance()
+      this.props.getTenants()
     }
 
     componentDidUpdate() {
@@ -53,44 +54,44 @@ class AdminReports extends Component {
         return 100;
       } else if (apt === 203 || apt === 204) {
         return 95;
-      } else if (apt === 101 || apt === 301) {
+      } else if (apt === 101 || apt === 306) {
         return 462;
-      } else if (apt === 102 || apt === 302) {
+      } else if (apt === 102 || apt === 305) {
         return 412;
-      } else if (apt === 103 || apt === 303) {
+      } else if (apt === 103 || apt === 304) {
         return 352;
-      } else if (apt === 104 || apt === 304) {
+      } else if (apt === 104 || apt === 303) {
         return 302;
-      } else if (apt === 105 || apt === 305) {
+      } else if (apt === 105 || apt === 302) {
         return 252;
-      } else if (apt === 106 || apt === 306) {
+      } else if (apt === 106 || apt === 301) {
         return 202;
       } 
     }
 
     parseMaintenanceData() {
-      const data = this.props.maintenance.reduce((accum, singleMaintenance) => {
+      const data = this.props.maintenance.reduce((accum, singleElem) => {
         // find out how many times each apartment had a maintenance order
-        if (!accum[singleMaintenance.aptNumber]) {
+        if (!accum[singleElem.aptNumber]) {
           // if apartment number doesn't exist in the accumulator, create it and set it equal to one
-          accum[singleMaintenance.aptNumber] = 1;
+          accum[singleElem.aptNumber] = 1;
         } else {
           // else add one
-          accum[singleMaintenance.aptNumber] = accum[singleMaintenance.aptNumber] + 1;
+          accum[singleElem.aptNumber] = accum[singleElem.aptNumber] + 1;
         }
         return accum;
         // comes out { aptNumber: numberOfTimesMaintenanceNeedReported }
       }, {})
       
-      const maintenanceData = this.props.maintenance.map(singleMaintenance => {
+      const maintenanceData = this.props.maintenance.map(singleElem => {
         // return data as you like it
         return ({
-          aptNumber: singleMaintenance.aptNumber,
+          aptNumber: singleElem.aptNumber,
           // x and y coordinates to place d3 circle exactly on top of apartment
-          x: this.xValue(singleMaintenance.aptNumber),
-          y: this.yValue(singleMaintenance.aptNumber),
+          x: this.xValue(singleElem.aptNumber),
+          y: this.yValue(singleElem.aptNumber),
           // data is the data we want for d3 circle radius
-          data: data[singleMaintenance.aptNumber]
+          data: data[singleElem.aptNumber]
         })
       })
 
@@ -105,14 +106,54 @@ class AdminReports extends Component {
 
       // make it a global variable
       this.data = maintenanceData;
-    
+      this.renderD3svg()
+    }
+
+    parseTenantData() {
+      const data = this.props.tenants.reduce((accum, singleElem) => {
+        // find out how many times each apartment had a maintenance order
+        if (!accum[singleElem.aptNumber]) {
+          // if apartment number doesn't exist in the accumulator, create it and set it equal to one
+          accum[singleElem.aptNumber] = 1;
+        } else {
+          // else add one
+          accum[singleElem.aptNumber] = accum[singleElem.aptNumber] + 1;
+        }
+        return accum;
+        // comes out { aptNumber: numberOfTimesMaintenanceNeedReported }
+      }, {})
+      
+      const tenantsData = this.props.tenants.map(singleElem => {
+        // return data as you like it
+        return ({
+          aptNumber: singleElem.aptNumber,
+          // x and y coordinates to place d3 circle exactly on top of apartment
+          x: this.xValue(singleElem.aptNumber),
+          y: this.yValue(singleElem.aptNumber),
+          // data is the data we want for d3 circle radius
+          data: data[singleElem.aptNumber]
+        })
+      })
+
+      // without this reducer function, the opacity of the d3 circles builds nice depth
+
+      // const uniqueMaintenanceData = maintenanceData.reduce((accum, elem) => {
+      //   const existing = accum.find(item => item.aptNumber === elem.aptNumber);
+      //   if (!existing) {
+      //     return accum.concat([elem])
+      //   } else return accum;
+      // }, [])
+
+      // make it a global variable
+      this.data = tenantsData;
       this.renderD3svg()
     }
 
     renderD3svg() {
       console.log(this.node)
       let svg = d3.select(this.node)
-      let dataArray = [15]
+      svg.selectAll("circle").remove();
+
 
       let newX = 300;
 
@@ -176,7 +217,7 @@ class AdminReports extends Component {
                           <text className="section" transform="matrix(1 0 0 1 338.6909 188.5688)">2</text>
                         </svg>
                         <svg id="circles" ref={node => this.node = node} width="100%" height="520"></svg>
-                        <button id="tenants-button" >tenants</button>
+                        <button id="tenants-button" onClick={this.parseTenantData.bind(this)}>tenants</button>
                         <button id="maintenance-button" onClick={this.parseMaintenanceData.bind(this)} >maintenance</button>
                         <button id="complaints-button">complaints</button>
                     </div>
@@ -187,11 +228,11 @@ class AdminReports extends Component {
 }
 
 function mapStateToProps(state) {
-  return { maintenance: state.maintenance };
+  return { maintenance: state.maintenance, tenants: state.tenants };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getMaintenance, changeStatus }, dispatch);
+  return bindActionCreators({ getMaintenance, getTenants }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminReports);
