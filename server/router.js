@@ -80,6 +80,10 @@ module.exports = function(app) {
     res.json('successful tenant saved')
   });
 
+  app.delete('/api/tenants', (req, res, next) => {
+    
+  });
+
   app.patch('/api/maintenance/status', (req, res, next) => {
     // change the boolean status of a maintenance report
     id = req.body._id

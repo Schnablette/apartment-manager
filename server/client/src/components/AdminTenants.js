@@ -17,6 +17,7 @@ class AdminTenants extends React.Component {
                     <td>{tenant.aptNumber}</td>
                     <td>{tenant.tenants}</td>
                     <td>{tenant.name}</td>
+                    <td><button>Move out</button></td>
                 </tr>
             )
         })
@@ -34,6 +35,7 @@ class AdminTenants extends React.Component {
                                 <th>Apt #</th>
                                 <th># of Tenants</th>
                                 <th>Name of Lead Tenant</th>
+                                <th><button id="add-tenants">Move in a new tenant</button></th>
                             </tr>
                         </thead>
                         <tbody>

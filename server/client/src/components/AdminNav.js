@@ -52,11 +52,3 @@ class NavBarUser extends Component {
   };
 
 export default NavBarUser;
-
-
-{/* <ul id="adminNavBar-list">
-<a href='/admin/reports'><li id="reports"><FontAwesomeIcon icon={faClipboardList} size="lg" style={{marginRight: "22px", transform: "rotate(-20deg)"}}/>Reports</li></a>
-<a href='/admin/maintenance'><li id="maintenance"><FontAwesomeIcon icon={faHammer} size="lg" style={{marginRight: "15px", transform: "rotate(-20deg)"}}/>Maintenance</li></a>
-<a href='/admin/complaints'><li id="complaints"><FontAwesomeIcon icon={faBullhorn} size="lg" style={{marginRight: "15px", transform: "rotate(-20deg)"}}/>Complaints</li></a>
-<a href='/admin/tenants'><li id="tenants"><FontAwesomeIcon icon={faUsers} size="lg" style={{marginRight: "15px"}}/>Tenants</li></a>
-</ul> */}

@@ -45,9 +45,11 @@ class UserComplaint extends Component {
     }
 
     submitComplaint() {
-        this.props.postComplaints(this.state.aptNumber, this.state.problemApt, this.state.type, this.state.description)
-        alert("complaint form submitted")
-        this.setState({redirect: true})
+        if (this.state.description && this.state.problemApt && this.state.type && this.state.aptNumber) {
+            this.props.postComplaints(this.state.aptNumber, this.state.problemApt, this.state.type, this.state.description)
+            alert("complaint form submitted")
+            this.setState({redirect: true})
+        }
     }
 
     render() {

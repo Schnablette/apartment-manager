@@ -162,7 +162,7 @@ class AdminReports extends Component {
           x: this.xValue(singleElem.problemApt),
           y: this.yValue(singleElem.problemApt),
           // data is the data we want for d3 circle radius
-          data: { data: data[singleElem.problemApt], color: "var(--bright)" }
+          data: { data: data[singleElem.problemApt], color: "var(--mid)" }
         })
       })
 
@@ -197,17 +197,16 @@ class AdminReports extends Component {
                 .attr("fill", d => { return d.data.color})
                 .attr("opacity", ".3")
                 .attr("z-index", "5")
-                .on("mouseover", function(d) {
-                  svg.append("circle")
-                    .attr("d", d3.select(this).attr("d"))
-                    .attr("id", "arcSelection")
-                    .style("fill", "none")
-                    .style("stroke", "#fff")
-                    .style("stroke-width", 2);
-              })
-              .on("mouseout", function(d) {
-                  d3.select("#arcSelection").remove();
-              });
+                .on('mouseover', function (d, i) {
+                  d3.select(this).transition()
+                       .duration('50')
+                       .attr('opacity', '.85');
+                })
+                .on('mouseout', function (d, i) {
+                  d3.select(this).transition()
+                       .duration('50')
+                       .attr('opacity', '.3');
+                })
     } 
 
     render() {
@@ -216,7 +215,7 @@ class AdminReports extends Component {
                 <AdminNav />
                 <div className="module">
                     <div id="d3-heatmap">
-                      <svg id="apartments-container" width="100%" height="500px" >
+                      {/* <svg id="apartments-container" width="100%" height="500px" >
                           <path id="a201" className="apartments" d="M192.4,134.3c-8.4-27.2-16.7-54.4-25.1-81.6c-2-6.3,2.8-13.4,10.6-15.7c10.8-3.1,21.7-5.8,32.6-8.3
                               c7.9-1.8,15.5,2.2,16.8,8.7c5.7,27.9,11.4,55.8,17.1,83.7c1.3,6.5-3,12.9-9.5,14.4c-9.1,2.1-18.1,4.4-27.1,6.9
                               C201.2,144.1,194.3,140.6,192.4,134.3z"/>
@@ -258,7 +257,7 @@ class AdminReports extends Component {
                           <text className="section" transform="matrix(1 0 0 1 198.6152 313.4097)">1</text>
                           <text className="section" transform="matrix(1 0 0 1 475.6699 313.4097)">3</text>
                           <text className="section" transform="matrix(1 0 0 1 338.6909 188.5688)">2</text>
-                        </svg>
+                        </svg> */}
                         <svg id="circles" ref={node => this.node = node} width="100%" height="520"></svg>
                         <button id="tenants-button" onClick={this.parseTenantData.bind(this)}>tenants</button>
                         <button id="maintenance-button" onClick={this.parseMaintenanceData.bind(this)} >maintenance</button>

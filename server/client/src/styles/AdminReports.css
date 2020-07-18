@@ -16,6 +16,12 @@
     z-index: 5;
 }
 
+#d3-heatmap {
+    background: url(../assets/apartments.svg) no-repeat;
+    background-size: 710px;
+    background-position: 0 28px;
+}
+
 #d3-heatmap button {
     width: 150px;
     height: 50px;
