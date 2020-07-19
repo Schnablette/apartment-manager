@@ -35,7 +35,8 @@ class UserMaintenance extends Component {
         })
     }
 
-    submitMaintenance() {
+    submitMaintenance(event) {
+        event.preventDefault()
         if (this.state.aptNumber && this.state.description && this.state.room) {
             this.props.postMaintenance(this.state.aptNumber, this.state.room, this.state.description)
             alert("maintenance report submitted")

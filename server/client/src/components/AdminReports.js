@@ -92,7 +92,7 @@ class AdminReports extends Component {
           x: this.xValue(singleElem.aptNumber),
           y: this.yValue(singleElem.aptNumber),
           // data is the data we want for d3 circle radius
-          data: { data: data[singleElem.aptNumber], color: "var(--bright)", text: `<strong>Apt:</strong> ${singleElem.aptNumber}</br> <strong>Reports:</strong> ${data[singleElem.aptNumber]}`}
+          data: { data: data[singleElem.aptNumber], color: "var(--bad)", text: `<strong>Apt:</strong> ${singleElem.aptNumber}</br> <strong>Reports:</strong> ${data[singleElem.aptNumber]}`}
         })
       })
 
@@ -120,7 +120,7 @@ class AdminReports extends Component {
           x: this.xValue(singleElem.aptNumber),
           y: this.yValue(singleElem.aptNumber),
           // data is the data we want for d3 circle radius
-          data: { data: singleElem.tenants, color: "var(--main)", text: `<strong>Apt:</strong> ${singleElem.aptNumber}</br> <strong>Lead Tenant:</strong> ${singleElem.name}</br> <strong>Tenants:</strong> ${singleElem.tenants}` }
+          data: { data: singleElem.tenants, color: "var(--good)", text: `<strong>Apt:</strong> ${singleElem.aptNumber}</br> <strong>Lead Tenant:</strong> ${singleElem.name}</br> <strong>Tenants:</strong> ${singleElem.tenants}` }
         })
       })
 
@@ -162,7 +162,7 @@ class AdminReports extends Component {
           x: this.xValue(singleElem.problemApt),
           y: this.yValue(singleElem.problemApt),
           // data is the data we want for d3 circle radius
-          data: { data: data[singleElem.problemApt], color: "var(--mid)", 
+          data: { data: data[singleElem.problemApt], color: "var(--bad)", 
                   text: `<strong>Offending Apt:</strong> ${singleElem.problemApt}</br> <strong>Complaints:</strong> ${data[singleElem.problemApt]}` }
         })
       })
@@ -193,6 +193,7 @@ class AdminReports extends Component {
                       .style("position", "absolute")
                       .style("z-index", "90")
                       .style("text-align", "center")
+                      .style("pointer-events", "none")
 
       svg.selectAll("circle")
         .data(this.data)
@@ -208,8 +209,8 @@ class AdminReports extends Component {
                        .attr('opacity', '.85');
                   Tooltip
                        .style("opacity", 1)
-                       .style("left", (d3.event.pageX + 5) + "px")
-                       .style("top", (d3.event.pageY + 5) + "px")
+                       .style("left", (d3.event.pageX + 20) + "px")
+                       .style("top", (d3.event.pageY + 15) + "px")
                        .html(d.data.text)
                        
                 })

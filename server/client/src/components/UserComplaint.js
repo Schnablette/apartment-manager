@@ -44,7 +44,8 @@ class UserComplaint extends Component {
         })
     }
 
-    submitComplaint() {
+    submitComplaint(event) {
+        event.preventDefault()
         if (this.state.description && this.state.problemApt && this.state.type && this.state.aptNumber) {
             this.props.postComplaints(this.state.aptNumber, this.state.problemApt, this.state.type, this.state.description)
             alert("complaint form submitted")

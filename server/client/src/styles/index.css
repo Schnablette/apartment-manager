@@ -1,13 +1,17 @@
 :root {
-  --main: #52DBA7;
+  --main: #5266db;
   --mid: #f89742;
-  --bright: #DB6797;
-  --main-light: #c0eedd;
-  --mid-light: #DBA370;
-  --bright-light: #DB9CB4;
-  --main-dark: #24AB7E;
-  --mid-dark: #AB5D13;
-  --bright-dark: #AB355B;
+  --bright: #f89742;
+  --main-light: #e2e6ff;
+  --mid-light: #ebc5a2;
+  --bright-light: #ebc5a2;
+  --main-dark: #34418b;
+  --mid-dark: #c76a14;
+  --bright-dark: #c76a14;
+  --good: #7ae783;
+  --good-dark: #65b86c;
+  --bad: #e44343;
+  --bad-dark: #b93737;
 }
 /* 
 :root {

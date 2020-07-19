@@ -12,18 +12,18 @@ width: 55%;
 
 td button {
   width: 100%;
-  background-color: var(--bright);
+  background-color: var(--bad);
   color: white;
   border: none;
   border-radius: 10px;
 }
 
 td button:hover {
-  background-color: var(--bright-dark);
+  background-color: var(--bad-dark);
 }
 
 #add-tenants {
-  background-color: var(--main);
+  background-color: var(--good);
   border: none;
   border-radius: 10px;
   color: white;
@@ -37,5 +37,5 @@ td button:hover {
 }
 
 #add-tenants:hover {
-  background-color: var(--main-dark);
+  background-color: var(--good-dark);
 }
