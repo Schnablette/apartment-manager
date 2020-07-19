@@ -1,6 +1,6 @@
 :root {
   --main: #52DBA7;
-  --mid: #f19340;
+  --mid: #f89742;
   --bright: #DB6797;
   --main-light: #c0eedd;
   --mid-light: #DBA370;
@@ -9,6 +9,18 @@
   --mid-dark: #AB5D13;
   --bright-dark: #AB355B;
 }
+/* 
+:root {
+  --main: #2768b3;
+  --mid: #f19340;
+  --bright: #f19340;
+  --main-light: #bddafc;
+  --mid-light: #DBA370;
+  --bright-light: #f7c9a2;
+  --main-dark: #1a4679;
+  --mid-dark: #AB5D13;
+  --bright-dark: #d3721d;
+} */
 
 body {
   margin: 0;

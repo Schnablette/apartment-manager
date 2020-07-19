@@ -38,3 +38,10 @@
 #d3-heatmap button:hover {
     background-color: var(--bright-dark);
 }
+
+.tooltip-heatmap {
+    background-color: white;
+    border: 1px solid black;
+    height: 50px;
+    width: 100px;
+}

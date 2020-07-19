@@ -162,7 +162,11 @@ class AdminReports extends Component {
           x: this.xValue(singleElem.problemApt),
           y: this.yValue(singleElem.problemApt),
           // data is the data we want for d3 circle radius
-          data: { data: data[singleElem.problemApt], color: "var(--mid)" }
+          data: { data: data[singleElem.problemApt], color: "var(--mid)", 
+                  text: {
+                    first: `Apt: ${singleElem.problemApt}`,
+                    second: `Number: ${data[singleElem.problemApt]}`
+                  }}
         })
       })
 
@@ -181,12 +185,21 @@ class AdminReports extends Component {
     }
 
     renderD3svg() {
-      console.log(this.node)
+      console.log(this.data)
       let svg = d3.select(this.node)
       svg.selectAll("circle").remove();
+      
 
-
-      let newX = 300;
+        // create a tooltip
+      var Tooltip = d3.select("#d3-heatmap")
+                      .append("div")
+                      .style("opacity", 0)
+                      .attr("class", "tooltip")
+                      .style("background-color", "white")
+                      .style("border", "solid")
+                      .style("border-width", "1px")
+                      .style("border-radius", "5px")
+                      .style("padding", "5px")
 
       svg.selectAll("circle")
         .data(this.data)
@@ -196,16 +209,20 @@ class AdminReports extends Component {
                 .attr("r", d => { return d.data.data * 10 })
                 .attr("fill", d => { return d.data.color})
                 .attr("opacity", ".3")
-                .attr("z-index", "5")
                 .on('mouseover', function (d, i) {
                   d3.select(this).transition()
                        .duration('50')
                        .attr('opacity', '.85');
+                  Tooltip
+                       .style("opacity", 1)
+                       .html( d => { console.log(d) })
+                       
                 })
                 .on('mouseout', function (d, i) {
                   d3.select(this).transition()
                        .duration('50')
                        .attr('opacity', '.3');
+                  
                 })
     } 
 

@@ -16,7 +16,7 @@
 }
 
 .module h1 {
-    color: var(--main);
+    color: var(--bright);
     text-align: center;
 }
 
