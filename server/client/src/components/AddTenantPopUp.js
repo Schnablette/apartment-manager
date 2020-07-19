@@ -36,10 +36,11 @@ class AddTenantPopUp extends Component {
     submitTenant(event) {
         event.preventDefault()
         if (this.state.name && this.state.tenants && this.state.aptNumber) {
-            this.props.addTenant(this.state.name, this.state.aptNumber, this.state.tenants)
+            this.props.addTenant(this.state.name, this.state.aptNumber, this.state.tenants);
+            alert("Tenant added");
+            this.props.exitPopUp();
         } else alert("Please fill out all the requested fields.")
-        alert("Tenant added")
-        this.props.exitPopUp()
+        
 
     }
 
@@ -62,7 +63,7 @@ class AddTenantPopUp extends Component {
                     <br/>
                     <label>Number of Tenants</label>
                     <input type="text" placeholder="#" className="apt" onChange={this.updateTenantsNumber.bind(this)} />
-                    <button type="text" onClick={this.submitTenant.bind(this)}>Submit</button>
+                    <button type="text" id="submitTenant" onClick={this.submitTenant.bind(this)}>Submit</button>
                 </form>
             </div>
         )

@@ -39,3 +39,15 @@ td button:hover {
 #add-tenants:hover {
   background-color: var(--good-dark);
 }
+
+#submitTenant {
+  background-color: var(--good);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1.5em;
+  font-weight: 100;
+  color: white;
+  display: block;
+  margin: 30px auto 0 auto;
+}

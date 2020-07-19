@@ -8,6 +8,14 @@ import { getMaintenance, getTenants, getComplaints } from "../actions/index";
 
 
 class AdminReports extends Component {
+    constructor() {
+      super()
+
+      this.state = {
+        active: ""
+      }
+    }
+
 
     componentDidMount() {
       // kick off data by getting it at start of mount
@@ -16,8 +24,11 @@ class AdminReports extends Component {
       this.props.getComplaints()
     }
 
-    componentDidUpdate() {
-    }
+    // isNowActive(event) {
+    //   if (this.state.active === true) {
+    //     event.target.className === "activeReportButton"
+    //   }
+    // }
 
     xValue(apt) {
       // all apartment x values
