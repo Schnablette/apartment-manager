@@ -7,6 +7,7 @@ export const POST_MAINTENANCE = "POST_MAINTENANCE";
 export const POST_COMPLAINTS = "POST_COMPLAINTS";
 export const CHANGE_STATUS = "CHANGE_STATUS";
 export const REMOVE_TENANT = "REMOVE_TENANT";
+export const ADD_TENANT = "ADD_TENANT";
 
 const ROOT_URL = process.env.baseURL || "http://localhost:8000"
 
@@ -106,6 +107,24 @@ export function removeTenant(id) {
 
     return {
         type: REMOVE_TENANT,
+        payload: request,
+    };
+}
+
+export function addTenant(name, aptNumber, tenants) {
+    const url = `${ROOT_URL}/api/tenants`;
+    const request = axios({
+        method: "post",
+        url: url,
+        data: {
+            name: name,
+            aptNumber: aptNumber,
+            tenants: tenants
+        }
+    });
+
+    return {
+        type: ADD_TENANT,
         payload: request,
     };
 }
