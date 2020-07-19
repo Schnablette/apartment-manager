@@ -167,15 +167,6 @@ class AdminReports extends Component {
         })
       })
 
-      // without this reducer function, the opacity of the d3 circles builds nice depth
-
-      // const uniqueMaintenanceData = maintenanceData.reduce((accum, elem) => {
-      //   const existing = accum.find(item => item.aptNumber === elem.aptNumber);
-      //   if (!existing) {
-      //     return accum.concat([elem])
-      //   } else return accum;
-      // }, [])
-
       // make it a global variable
       this.data = complaintData;
       this.renderD3svg()
@@ -228,6 +219,7 @@ class AdminReports extends Component {
                        .attr('opacity', '.3');
                   Tooltip
                        .style("opacity", 0)
+
                   
                 })
     } 

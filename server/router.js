@@ -81,7 +81,9 @@ module.exports = function(app) {
   });
 
   app.delete('/api/tenants', (req, res, next) => {
+    id = req.body._id;
     
+    Tenant.deleteOne({_id: id}, (err, result) => { if (err) {err} else res.json(result)})
   });
 
   app.patch('/api/maintenance/status', (req, res, next) => {
@@ -102,15 +104,5 @@ module.exports = function(app) {
         } else res.json(result);
       });
     }
-  });
-
-  app.get('/api/maintenance/d3', (req, res, next) => {
-    // get all maintenance reports
-    Maintenance.find({}).exec((err, allMaintenance) => {
-      if (err) {
-        res.send(err)
-      }
-      res.send(allMaintenance)
-    });
   });
 }

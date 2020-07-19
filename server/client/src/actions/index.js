@@ -6,6 +6,7 @@ export const GET_TENANTS = "GET_TENANTS";
 export const POST_MAINTENANCE = "POST_MAINTENANCE";
 export const POST_COMPLAINTS = "POST_COMPLAINTS";
 export const CHANGE_STATUS = "CHANGE_STATUS";
+export const REMOVE_TENANT = "REMOVE_TENANT";
 
 const ROOT_URL = process.env.baseURL || "http://localhost:8000"
 
@@ -89,6 +90,22 @@ export function changeStatus(id, status) {
 
     return {
         type: CHANGE_STATUS,
+        payload: request,
+    };
+}
+
+export function removeTenant(id) {
+    const url = `${ROOT_URL}/api/tenants`;
+    const request = axios({
+        method: "delete",
+        url: url,
+        data: {
+            _id: id,
+        }
+    });
+
+    return {
+        type: REMOVE_TENANT,
         payload: request,
     };
 }
