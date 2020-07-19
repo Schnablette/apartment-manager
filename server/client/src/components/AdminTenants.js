@@ -7,6 +7,13 @@ import { getTenants, removeTenant } from "../actions/index";
 import AddTenantPopUp from './AddTenantPopUp';
 
 class AdminTenants extends React.Component {
+    constructor() {
+        super()
+
+        this.state = {
+            active: false
+        }
+    }
     componentDidMount() {
         this.props.getTenants()
     }
@@ -21,8 +28,18 @@ class AdminTenants extends React.Component {
     }
 
     addTenantPopUp() {
-
+        this.setState({active: !this.state.active})
     }
+
+    exitPopUp() {
+        this.setState({active: !this.state.active})
+    }
+
+    // closePopup() {
+    //     if (this.state.active) {
+    //         this.setState({active: false})
+    //     }
+    // }
 
     renderTenants() {
         return this.props.tenants.map((tenant) => {
@@ -42,7 +59,7 @@ class AdminTenants extends React.Component {
             <div>
                 <AdminNav />
                 <div className="module">
-                    <AddTenantPopUp />
+                    {this.state.active && <AddTenantPopUp exitPopUp={this.exitPopUp.bind(this)} />}
                     <h1>Tenants</h1>
                     <table>
                         <thead id="tenantTableHead">

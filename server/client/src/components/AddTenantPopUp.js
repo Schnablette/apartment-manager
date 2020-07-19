@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import "../styles/AddTenantPopUp.css";
 
 class AddTenantPopUp extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             name: "",
@@ -16,10 +16,14 @@ class AddTenantPopUp extends Component {
 
     }
 
+    exit() {
+        this.props.exitPopUp()
+    }
+
     render() {
         return (
             <div id="addTenantPopup">
-                <p className="exit">X</p>
+                <p className="exit" onClick={this.exit.bind(this)}>X</p>
                 <h1>Move In a Tenant</h1>
                 <form role="form">
                     <label>Lead Tenant's Name</label>
