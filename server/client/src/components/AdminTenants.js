@@ -18,13 +18,13 @@ class AdminTenants extends React.Component {
         this.props.getTenants()
     }
 
+    componentDidUpdate() {
+        this.props.getTenants()
+    }
+
     moveOutTenant(event) {
         let id = event.target.parentElement.parentElement.id
         this.props.removeTenant(id)
-    }
-
-    componentDidUpdate() {
-        this.props.getTenants()
     }
 
     addTenantPopUp() {
