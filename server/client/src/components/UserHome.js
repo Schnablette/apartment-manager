@@ -19,7 +19,7 @@ class UserHome extends Component {
     render() {
         return (
             <div>
-                <h1 className="logo">Namely</h1>
+                <h1 className="logo">Abode</h1>
                 <div className="homePic"></div>
                 <div id="userHomeModule">
                 <h1 id="welcome">Welcome Hill<br/>Valley Resident</h1>

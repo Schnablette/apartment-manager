@@ -13,7 +13,7 @@ class NavBarUser extends Component {
     render() {
         return (
             <nav id="adminNavBar">
-                <h1>Namely</h1>
+                <h1>Abode</h1>
                 <NavLink
                     activeClassName="active-adminNav"
                     className="adminNavBar-list"

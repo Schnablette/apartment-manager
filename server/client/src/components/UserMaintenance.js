@@ -53,7 +53,7 @@ class UserMaintenance extends Component {
 
         return (
             <div id="userMaintenance">
-                <a href="/user"><h1 className="logo">Namely</h1></a>
+                <a href="/user"><h1 className="logo">Abode</h1></a>
                 <div id="maintenanceBackgroundImage"></div>
                 <div className="moduleForm" id="complaintForm">
                     <h1>Resident Maintenance Request</h1>

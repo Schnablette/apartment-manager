@@ -57,7 +57,7 @@ class UserComplaint extends Component {
             return <Redirect to="/user" />
         } else return (
             <div id="userComplaint">
-                <a href="/user"><h1 className="logo">Namely</h1></a>
+                <a href="/user"><h1 className="logo">Abode</h1></a>
                 <div id="complaintBackgroundImage"></div>
                 <div className="moduleForm" id="complaintForm">
                     <h1>Resident Complaint Form</h1>

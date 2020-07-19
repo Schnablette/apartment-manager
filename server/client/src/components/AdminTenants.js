@@ -4,6 +4,7 @@ import AdminNav from "./AdminNav";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getTenants, removeTenant } from "../actions/index";
+import AddTenantPopUp from './AddTenantPopUp';
 
 class AdminTenants extends React.Component {
     componentDidMount() {
@@ -17,6 +18,10 @@ class AdminTenants extends React.Component {
 
     componentDidUpdate() {
         this.props.getTenants()
+    }
+
+    addTenantPopUp() {
+
     }
 
     renderTenants() {
@@ -37,6 +42,7 @@ class AdminTenants extends React.Component {
             <div>
                 <AdminNav />
                 <div className="module">
+                    <AddTenantPopUp />
                     <h1>Tenants</h1>
                     <table>
                         <thead id="tenantTableHead">
@@ -44,7 +50,7 @@ class AdminTenants extends React.Component {
                                 <th>Apt #</th>
                                 <th># of Tenants</th>
                                 <th>Name of Lead Tenant</th>
-                                <th><button id="add-tenants">Move in a new tenant</button></th>
+                                <th><button id="add-tenants" onClick={this.addTenantPopUp.bind(this)}>Move in a new tenant</button></th>
                             </tr>
                         </thead>
                         <tbody>

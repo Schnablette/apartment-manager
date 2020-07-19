@@ -274,9 +274,9 @@ class AdminReports extends Component {
                           <text className="section" transform="matrix(1 0 0 1 338.6909 188.5688)">2</text>
                         </svg> */}
                         <svg id="circles" ref={node => this.node = node} width="100%" height="520"></svg>
-                        <button id="tenants-button" onClick={this.parseTenantData.bind(this)}>tenants</button>
-                        <button id="maintenance-button" onClick={this.parseMaintenanceData.bind(this)} >maintenance</button>
-                        <button id="complaints-button" onClick={this.parseComplaintData.bind(this)}>complaints</button>
+                        <button id="tenants-button" onClick={this.parseTenantData.bind(this)}>Tenants</button>
+                        <button id="maintenance-button" onClick={this.parseMaintenanceData.bind(this)} >Maintenance</button>
+                        <button id="complaints-button" onClick={this.parseComplaintData.bind(this)}>Complaints</button>
                     </div>
                 </div>
             </div>
