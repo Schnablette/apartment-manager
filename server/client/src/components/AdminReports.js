@@ -19,9 +19,12 @@ class AdminReports extends Component {
 
     componentDidMount() {
       // kick off data by getting it at start of mount
-      
+      this.props.getTenants()
       this.props.getMaintenance()
       this.props.getComplaints()
+      setTimeout(() => {
+        this.parseTenantData()
+      }, 100);
     }
 
     xValue(apt) {
@@ -77,6 +80,7 @@ class AdminReports extends Component {
 
     parseMaintenanceData(event) {
       this.setState({h2: "Number of Maint. Reports"})
+      this.setState({active: "maintenance"})
 
       // change button color to active color
       this.setState({active: event.target.value})
@@ -113,6 +117,7 @@ class AdminReports extends Component {
 
     parseTenantData() {
       this.setState({h2: "Number of Tenants"})
+      this.setState({active: "tenants"})
 
       const tenantsData = this.props.tenants.map(singleElem => {
         // return data as you like it
@@ -222,6 +227,7 @@ class AdminReports extends Component {
     } 
 
     render() {
+      
         return (
             <div>
                 <AdminNav />

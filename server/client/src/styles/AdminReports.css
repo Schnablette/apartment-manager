@@ -51,7 +51,7 @@
 }
 
 .activeChartButton {
-    background-color: black;
+    background-color: var(--main-dark) !important;
 }
 
 #descriptor {
