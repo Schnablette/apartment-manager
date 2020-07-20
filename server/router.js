@@ -6,7 +6,7 @@ const moment = require("moment");
 module.exports = function(app) {
   app.get('/api/maintenance', (req, res, next) => {
     // get all maintenance reports
-    Maintenance.find({}).exec((err, allMaintenance) => {
+    Maintenance.find({}).sort({date: 'desc'}).exec((err, allMaintenance) => {
       if (err) {
         res.send(err)
       }
@@ -32,7 +32,7 @@ module.exports = function(app) {
 
   app.get('/api/complaints', (req, res, next) => {
     // get all complaints
-    Complaint.find({}).exec((err, allComplaints) => {
+    Complaint.find({}).sort({date: 'desc'}).exec((err, allComplaints) => {
       if (err) {
         res.send(err)
       }
