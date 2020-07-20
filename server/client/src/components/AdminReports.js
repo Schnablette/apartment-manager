@@ -12,14 +12,15 @@ class AdminReports extends Component {
       super()
 
       this.state = {
-        active: ""
+        active: "tenants",
+        h2: "Number of Tenants"
       }
     }
 
     componentDidMount() {
       // kick off data by getting it at start of mount
-      this.props.getMaintenance()
       this.props.getTenants()
+      this.props.getMaintenance()
       this.props.getComplaints()
     }
 
@@ -75,6 +76,8 @@ class AdminReports extends Component {
     }
 
     parseMaintenanceData(event) {
+      this.setState({h2: "Number of Maint. Reports"})
+
       // change button color to active color
       this.setState({active: event.target.value})
 
@@ -109,7 +112,8 @@ class AdminReports extends Component {
     }
 
     parseTenantData() {
-      
+      this.setState({h2: "Number of Tenants"})
+
       const tenantsData = this.props.tenants.map(singleElem => {
         // return data as you like it
         return ({
@@ -128,6 +132,9 @@ class AdminReports extends Component {
     }
 
     parseComplaintData() {
+      this.setState({h2: "Number of Complaints"})
+      this.setState({active: "complaints"})
+
       const data = this.props.complaints.reduce((accum, singleElem) => {
         // find out how many times each apartment had a maintenance order
         if (!accum[singleElem.problemApt]) {
@@ -221,7 +228,8 @@ class AdminReports extends Component {
                 <div className="module">
                     <div id="d3-heatmap">
                         <svg id="circles" ref={node => this.node = node} width="100%" height="520"></svg>
-                        <button id="tenants-button" onClick={this.parseTenantData.bind(this)} value="tenants">Tenants</button>
+                        <h2 id="descriptor">{this.state.h2}</h2>
+                        <button id="tenants-button" onClick={this.parseTenantData.bind(this)} className={this.state.active === 'tenants' ? 'activeChartButton' : ''} value="tenants">Tenants</button>
                         <button id="maintenance-button" onClick={this.parseMaintenanceData.bind(this)} className={this.state.active === 'maintenance' ? 'activeChartButton' : ''} value="maintenance">Maintenance</button>
                         <button id="complaints-button" onClick={this.parseComplaintData.bind(this)} className={this.state.active === 'complaints' ? 'activeChartButton' : ''} value="complaints">Complaints</button>
                     </div>
