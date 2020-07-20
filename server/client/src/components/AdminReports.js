@@ -19,7 +19,7 @@ class AdminReports extends Component {
 
     componentDidMount() {
       // kick off data by getting it at start of mount
-      this.props.getTenants()
+      
       this.props.getMaintenance()
       this.props.getComplaints()
     }

@@ -4,6 +4,8 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import AdminNav from "./AdminNav";
 import { getMaintenance, changeStatus } from "../actions/index";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 class AdminMaintenance extends React.Component {
     componentDidMount() {
@@ -20,6 +22,7 @@ class AdminMaintenance extends React.Component {
         this.props.getMaintenance()
     }
     
+
     renderTable() {
         return this.props.maintenance.map((singleMaintenance) => {
             let statusColor = () => {
@@ -28,13 +31,19 @@ class AdminMaintenance extends React.Component {
                 } else return "var(--bad)"
             }
 
+            let determineCompletion = () => {
+                if (singleMaintenance.status == true) {
+                    return <FontAwesomeIcon id="check" size="lg" icon={faCheck} />
+                } else return <strong>X</strong>
+            }
+
             return (
                 <tr id={singleMaintenance._id} key={singleMaintenance._id}>
                     <td>{singleMaintenance.date}</td>
                     <td>{singleMaintenance.aptNumber}</td>
                     <td>{singleMaintenance.room}</td>
                     <td className="description">{singleMaintenance.description}</td>
-                    <td><button id={singleMaintenance.status.toString()} className="completeButton" onClick={this.changeColor.bind(this)} style={{backgroundColor: statusColor()}}></button></td>
+            <td><button id={singleMaintenance.status.toString()} className="completeButton" onClick={this.changeColor.bind(this)} style={{backgroundColor: statusColor()}}>{determineCompletion()}</button></td>
                 </tr>
             )
         })
