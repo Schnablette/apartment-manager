@@ -4,8 +4,6 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import AdminNav from "./AdminNav";
 import { getMaintenance, changeStatus } from "../actions/index";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 class AdminMaintenance extends React.Component {
     componentDidMount() {
@@ -33,7 +31,7 @@ class AdminMaintenance extends React.Component {
 
             let determineCompletion = () => {
                 if (singleMaintenance.status == true) {
-                    return <FontAwesomeIcon id="check" size="lg" icon={faCheck} />
+                    return <strong>O</strong>
                 } else return <strong>X</strong>
             }
 
