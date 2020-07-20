@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom"
+import { NavLink, Link } from "react-router-dom"
 import "../styles/AdminNavBar.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClipboardList, faHammer, faBullhorn, faUsers } from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +13,9 @@ class NavBarUser extends Component {
     render() {
         return (
             <nav id="adminNavBar">
-                <h1>Abode</h1>
+                <Link to="/">
+                    <h1>Abode</h1>
+                </Link>
                 <NavLink
                     activeClassName="active-adminNav"
                     className="adminNavBar-list"

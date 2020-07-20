@@ -19,7 +19,7 @@
 #d3-heatmap {
     background: url(../assets/apartments.svg) no-repeat;
     background-size: 710px;
-    background-position: 0 28px;
+    background-position: 150px 28px;
 }
 
 #d3-heatmap button {
@@ -33,6 +33,7 @@
     border: none;
     position: relative;
     z-index: 5;
+    transform: translate(150px, 0);
 }
 
 #d3-heatmap button:hover {
@@ -45,3 +46,15 @@
     height: 50px;
     width: 100px;
 }
+
+/* #rightCharts {
+    height: 90%;
+    width: 340px;
+    position: absolute;
+    top: 5%;
+    right: 0;
+    left: 720px;
+    bottom: 0;
+    float: right;
+    background-color: black;
+} */
