@@ -40,6 +40,10 @@
     background-color: var(--main-dark);
 }
 
+#d3-heatmap button:focus {
+    background-color: var(--main-dark);
+}
+
 .tooltip-heatmap {
     background-color: white;
     border: 1px solid black;
@@ -47,14 +51,6 @@
     width: 100px;
 }
 
-/* #rightCharts {
-    height: 90%;
-    width: 340px;
-    position: absolute;
-    top: 5%;
-    right: 0;
-    left: 720px;
-    bottom: 0;
-    float: right;
+.activeChartButton {
     background-color: black;
-} */
+}

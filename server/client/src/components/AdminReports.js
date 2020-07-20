@@ -74,7 +74,10 @@ class AdminReports extends Component {
       } 
     }
 
-    parseMaintenanceData() {
+    parseMaintenanceData(event) {
+      // change button color to active color
+      this.setState({active: event.target.value})
+
       const data = this.props.maintenance.reduce((accum, singleElem) => {
         // find out how many times each apartment had a maintenance order
         if (!accum[singleElem.aptNumber]) {
@@ -218,9 +221,9 @@ class AdminReports extends Component {
                 <div className="module">
                     <div id="d3-heatmap">
                         <svg id="circles" ref={node => this.node = node} width="100%" height="520"></svg>
-                        <button id="tenants-button" onClick={this.parseTenantData.bind(this)}>Tenants</button>
-                        <button id="maintenance-button" onClick={this.parseMaintenanceData.bind(this)} >Maintenance</button>
-                        <button id="complaints-button" onClick={this.parseComplaintData.bind(this)}>Complaints</button>
+                        <button id="tenants-button" onClick={this.parseTenantData.bind(this)} value="tenants">Tenants</button>
+                        <button id="maintenance-button" onClick={this.parseMaintenanceData.bind(this)} className={this.state.active === 'maintenance' ? 'activeChartButton' : ''} value="maintenance">Maintenance</button>
+                        <button id="complaints-button" onClick={this.parseComplaintData.bind(this)} className={this.state.active === 'complaints' ? 'activeChartButton' : ''} value="complaints">Complaints</button>
                     </div>
                 </div>
             </div>
