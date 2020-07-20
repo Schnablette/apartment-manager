@@ -29,19 +29,13 @@ class AdminMaintenance extends React.Component {
                 } else return "var(--bad)"
             }
 
-            let determineCompletion = () => {
-                if (singleMaintenance.status == true) {
-                    return <strong>O</strong>
-                } else return <strong>X</strong>
-            }
-
             return (
                 <tr id={singleMaintenance._id} key={singleMaintenance._id}>
                     <td>{singleMaintenance.date}</td>
                     <td>{singleMaintenance.aptNumber}</td>
                     <td>{singleMaintenance.room}</td>
                     <td className="description">{singleMaintenance.description}</td>
-            <td><button id={singleMaintenance.status.toString()} className="completeButton" onClick={this.changeColor.bind(this)} style={{backgroundColor: statusColor()}}>{determineCompletion()}</button></td>
+            <td><button id={singleMaintenance.status.toString()} className="completeButton" onClick={this.changeColor.bind(this)} style={{backgroundColor: statusColor()}}></button></td>
                 </tr>
             )
         })
