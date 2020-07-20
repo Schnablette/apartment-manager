@@ -35,10 +35,13 @@ class UserMaintenance extends Component {
         })
     }
 
-    submitMaintenance() {
-        this.props.postMaintenance(this.state.aptNumber, this.state.room, this.state.description)
-        alert("maintenance report submitted")
-        this.setState({redirect: true})
+    submitMaintenance(event) {
+        event.preventDefault()
+        if (this.state.aptNumber && this.state.description && this.state.room) {
+            this.props.postMaintenance(this.state.aptNumber, this.state.room, this.state.description)
+            alert("maintenance report submitted")
+            this.setState({redirect: true})
+        } else alert("Please be sure to fill out all areas of the request.")
     }
 
 

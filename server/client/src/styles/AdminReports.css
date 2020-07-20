@@ -13,21 +13,44 @@
     margin: 25px 0 0 0;
     float: left;
     position: absolute;
+    z-index: 5;
+}
+
+#d3-heatmap {
+    background: url(../assets/apartments.svg) no-repeat;
+    background-size: 710px;
+    background-position: 150px 28px;
 }
 
 #d3-heatmap button {
     width: 150px;
     height: 50px;
-    background-color: var(--bright);
+    background-color: var(--main);
     color: white;
     font-size: 1.3em;
     border-radius: 20px;
     margin: 0 0 0 65px;
     border: none;
     position: relative;
-    z-index: 0;
+    z-index: 5;
+    transform: translate(150px, 0);
 }
 
 #d3-heatmap button:hover {
-    background-color: var(--bright-dark);
+    background-color: var(--main-dark);
+}
+
+#d3-heatmap button:focus {
+    background-color: var(--main-dark);
+}
+
+.tooltip-heatmap {
+    background-color: white;
+    border: 1px solid black;
+    height: 50px;
+    width: 100px;
+}
+
+.activeChartButton {
+    background-color: black;
 }

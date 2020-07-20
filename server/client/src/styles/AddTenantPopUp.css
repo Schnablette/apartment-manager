@@ -1,0 +1,29 @@
+#addTenantPopup {
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    border: 5px solid var(--main);
+    position: absolute;
+    z-index: 91;
+    border-radius: 20px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.exit {
+    float: right;
+    position: absolute;
+    top: -25px;
+    right: 0;
+    left: 93%;
+    bottom: 0;
+    font-size: 2.5em;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    color: var(--bad)
+}
+

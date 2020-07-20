@@ -7,5 +7,47 @@ width: 10%;
 }
 
 #tenantTableHead th:nth-child(3) {
-width: 75%;
+width: 55%;
+}
+
+td button {
+  width: 100%;
+  background-color: var(--bad);
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+td button:hover {
+  background-color: var(--bad-dark);
+}
+
+#add-tenants {
+  background-color: var(--good);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  top: 0;
+  right: 75px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  float: right;
+}
+
+#add-tenants:hover {
+  background-color: var(--good-dark);
+}
+
+#submitTenant {
+  background-color: var(--good);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1.5em;
+  font-weight: 100;
+  color: white;
+  display: block;
+  margin: 30px auto 0 auto;
 }

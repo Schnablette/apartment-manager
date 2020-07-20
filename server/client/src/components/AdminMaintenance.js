@@ -24,8 +24,8 @@ class AdminMaintenance extends React.Component {
         return this.props.maintenance.map((singleMaintenance) => {
             let statusColor = () => {
                 if (singleMaintenance.status == true) {
-                    return "var(--main)"
-                } else return "var(--bright-light)"
+                    return "var(--good)"
+                } else return "var(--bad)"
             }
 
             return (

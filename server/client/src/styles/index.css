@@ -1,14 +1,30 @@
 :root {
-  --main: #52DBA7;
-  --mid: #DB853B;
-  --bright: #DB6797;
-  --main-light: #c0eedd;
-  --mid-light: #DBA370;
-  --bright-light: #DB9CB4;
-  --main-dark: #24AB7E;
-  --mid-dark: #AB5D13;
-  --bright-dark: #AB355B;
+  --main: #5266db;
+  --mid: #f89742;
+  --bright: #f89742;
+  --main-light: #e2e6ff;
+  --mid-light: #ebc5a2;
+  --bright-light: #ebc5a2;
+  --main-dark: #34418b;
+  --mid-dark: #c76a14;
+  --bright-dark: #c76a14;
+  --good: #7ae783;
+  --good-dark: #65b86c;
+  --bad: #e44343;
+  --bad-dark: #b93737;
 }
+/* 
+:root {
+  --main: #2768b3;
+  --mid: #f19340;
+  --bright: #f19340;
+  --main-light: #bddafc;
+  --mid-light: #DBA370;
+  --bright-light: #f7c9a2;
+  --main-dark: #1a4679;
+  --mid-dark: #AB5D13;
+  --bright-dark: #d3721d;
+} */
 
 body {
   margin: 0;
@@ -36,6 +52,10 @@ p {
 
 button {
   cursor: pointer;
+}
+
+button:focus {
+  outline: none;
 }
 
 a {
